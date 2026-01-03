@@ -1,0 +1,73 @@
+#!/bin/sh
+# PostgreSQL s6 service
+
+PG_VERSION=$(cat /var/db/postgres/pg_version 2>/dev/null || echo "17")
+PGDATA="/var/db/postgres/data${PG_VERSION}"
+
+# Initialize database if needed
+if [ ! -f "$PGDATA/PG_VERSION" ]; then
+    echo "Initializing PostgreSQL ${PG_VERSION} database..."
+
+    # Build initdb command with optional args
+    INITDB_CMD="/usr/local/bin/initdb -D $PGDATA -E UTF8 --locale=C"
+    if [ -n "$POSTGRES_INITDB_ARGS" ]; then
+        INITDB_CMD="$INITDB_CMD $POSTGRES_INITDB_ARGS"
+    fi
+    /usr/local/bin/s6-setuidgid bsd sh -c "$INITDB_CMD"
+
+    # Configure authentication method (default: scram-sha-256)
+    AUTH_METHOD="${POSTGRES_HOST_AUTH_METHOD:-scram-sha-256}"
+    echo "host all all 0.0.0.0/0 $AUTH_METHOD" >> "$PGDATA/pg_hba.conf"
+    echo "host all all ::/0 $AUTH_METHOD" >> "$PGDATA/pg_hba.conf"
+    echo "local all all trust" >> "$PGDATA/pg_hba.conf"
+
+    # Listen on all interfaces
+    echo "listen_addresses = '*'" >> "$PGDATA/postgresql.conf"
+
+    # Start temporarily to create user/database and run init scripts
+    /usr/local/bin/s6-setuidgid bsd /usr/local/bin/pg_ctl -D "$PGDATA" -w start
+
+    # Create user and database if specified
+    if [ -n "$POSTGRES_PASSWORD" ]; then
+        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -c "ALTER USER $POSTGRES_USER PASSWORD '$POSTGRES_PASSWORD'" 2>/dev/null
+    fi
+
+    if [ -n "$POSTGRES_DB" ] && [ "$POSTGRES_DB" != "postgres" ]; then
+        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/createdb "$POSTGRES_DB" 2>/dev/null
+    fi
+
+    # Run init scripts from /docker-entrypoint-initdb.d/
+    if [ -d /docker-entrypoint-initdb.d ]; then
+        for f in /docker-entrypoint-initdb.d/*; do
+            [ -e "$f" ] || continue
+            case "$f" in
+                *.sh)
+                    if [ -x "$f" ]; then
+                        echo "Running $f"
+                        "$f"
+                    else
+                        echo "Sourcing $f"
+                        . "$f"
+                    fi
+                    ;;
+                *.sql)
+                    echo "Running $f"
+                    /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d "${POSTGRES_DB:-postgres}" -f "$f"
+                    ;;
+                *.sql.gz)
+                    echo "Running $f"
+                    gunzip -c "$f" | /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d "${POSTGRES_DB:-postgres}"
+                    ;;
+                *)
+                    echo "Ignoring $f"
+                    ;;
+            esac
+        done
+    fi
+
+    # Stop PostgreSQL (s6 will start it properly)
+    /usr/local/bin/s6-setuidgid bsd /usr/local/bin/pg_ctl -D "$PGDATA" -w stop
+fi
+
+echo "Starting PostgreSQL ${PG_VERSION}..."
+exec /usr/local/bin/s6-setuidgid bsd /usr/local/bin/postgres -D "$PGDATA"

@@ -1,0 +1,28 @@
+#!/bin/sh
+# PostgreSQL configuration setup
+
+# Load secrets from *_FILE environment variables (Docker secrets pattern)
+for var in $(env | grep '_FILE=' | cut -d= -f1); do
+    base_var="${var%_FILE}"
+    file_path="$(eval echo \"\$$var\")"
+    if [ -f "$file_path" ]; then
+        value="$(cat "$file_path")"
+        export "$base_var"="$value"
+        echo "Loaded secret for $base_var from $file_path"
+    else
+        echo "Warning: Secret file $file_path not found for $var"
+    fi
+done
+
+PG_VERSION=$(cat /var/db/postgres/pg_version 2>/dev/null || echo "17")
+PGDATA="/var/db/postgres/data${PG_VERSION}"
+
+echo "Setting up PostgreSQL ${PG_VERSION}..."
+
+# Create required directories
+mkdir -p "$PGDATA" /var/run/postgresql
+
+# Set ownership (bsd:bsd is UID/GID 1000:1000)
+chown -R bsd:bsd /var/db/postgres /var/run/postgresql
+
+echo "PostgreSQL configuration complete"
