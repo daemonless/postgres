@@ -37,11 +37,15 @@ services:
 
 ## Tags
 
-| Tag | Description |
-|-----|-------------|
-| `:17` | PostgreSQL 17 (latest) |
-| `:14` | PostgreSQL 14 |
-| `:latest` | Alias for `:17` |
+| Tag | Base | Description |
+|-----|------|-------------|
+| `:17` | quarterly | PostgreSQL 17 |
+| `:17-pkg` | quarterly | Alias for `:17` |
+| `:17-pkg-latest` | latest | PostgreSQL 17 (latest packages) |
+| `:14` | quarterly | PostgreSQL 14 |
+| `:14-pkg` | quarterly | Alias for `:14` |
+| `:14-pkg-latest` | latest | PostgreSQL 14 (latest packages) |
+| `:latest` | quarterly | Alias for `:17` |
 
 ## Environment Variables
 
