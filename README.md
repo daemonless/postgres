@@ -46,6 +46,8 @@ services:
 | `:14-pkg` | quarterly | Alias for `:14` |
 | `:14-pkg-latest` | latest | PostgreSQL 14 (latest packages) |
 | `:latest` | quarterly | Alias for `:17` |
+| `:pkg` | quarterly | Alias for `:17` |
+| `:pkg-latest` | latest | Alias for `:17-pkg-latest` |
 
 ## Environment Variables
 

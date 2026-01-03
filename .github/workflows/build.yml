@@ -35,7 +35,7 @@ jobs:
       image_name: postgres
       image_tag: "17"
       build_args: "PG_VERSION=17,BASE_VERSION=15-quarterly"
-      extra_tags: "17-pkg,latest"
+      extra_tags: "17-pkg,pkg,latest"
     secrets: inherit
 
   # PostgreSQL 17 (latest packages)
@@ -45,4 +45,5 @@ jobs:
       image_name: postgres
       image_tag: "17-pkg-latest"
       build_args: "PG_VERSION=17,BASE_VERSION=15"
+      extra_tags: "pkg-latest"
     secrets: inherit

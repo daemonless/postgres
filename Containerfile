@@ -41,6 +41,10 @@ RUN chmod +x /etc/services.d/*/run /etc/cont-init.d/* 2>/dev/null || true
 # Store PG version for scripts
 RUN echo "${PG_VERSION}" > /var/db/postgres/pg_version
 
+# Extract package version for tagging (e.g., 17.7 or 14.20)
+RUN mkdir -p /app && \
+    pkg query '%v' postgresql${PG_VERSION}-server | sed 's/_.*$//' > /app/version
+
 ENV PGDATA="/var/db/postgres/data${PG_VERSION}" \
     PG_VERSION="${PG_VERSION}" \
     POSTGRES_USER="postgres" \
