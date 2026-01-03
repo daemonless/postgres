@@ -28,9 +28,10 @@ RUN pkg update && \
     pkg clean -ay && \
     rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
 
-# Create directories
-RUN mkdir -p /var/db/postgres/data${PG_VERSION} /var/run/postgresql /run/secrets /docker-entrypoint-initdb.d && \
-    chown -R bsd:bsd /var/db/postgres /var/run/postgresql /run/secrets /docker-entrypoint-initdb.d
+# Create directories (use Linux-compatible paths for drop-in replacement)
+RUN mkdir -p /var/lib/postgresql/data /var/run/postgresql /run/secrets /docker-entrypoint-initdb.d && \
+    chmod 755 /var/lib && \
+    chown -R bsd:bsd /var/lib/postgresql /var/run/postgresql /run/secrets /docker-entrypoint-initdb.d
 
 # Copy service definitions and init scripts
 COPY root/ /
@@ -39,13 +40,13 @@ COPY root/ /
 RUN chmod +x /etc/services.d/*/run /etc/cont-init.d/* 2>/dev/null || true
 
 # Store PG version for scripts
-RUN echo "${PG_VERSION}" > /var/db/postgres/pg_version
+RUN mkdir -p /var/db/postgres && echo "${PG_VERSION}" > /var/db/postgres/pg_version
 
 # Extract package version for tagging (e.g., 17.7 or 14.20)
 RUN mkdir -p /app && \
     pkg query '%v' postgresql${PG_VERSION}-server | sed 's/_.*$//' > /app/version
 
-ENV PGDATA="/var/db/postgres/data${PG_VERSION}" \
+ENV PGDATA="/var/lib/postgresql/data" \
     PG_VERSION="${PG_VERSION}" \
     POSTGRES_USER="postgres" \
     POSTGRES_PASSWORD="" \
@@ -54,4 +55,4 @@ ENV PGDATA="/var/db/postgres/data${PG_VERSION}" \
     POSTGRES_HOST_AUTH_METHOD="scram-sha-256"
 
 EXPOSE 5432
-VOLUME /var/db/postgres
+VOLUME /var/lib/postgresql/data

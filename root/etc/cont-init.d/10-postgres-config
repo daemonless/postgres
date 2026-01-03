@@ -14,15 +14,15 @@ for var in $(env | grep '_FILE=' | cut -d= -f1); do
     fi
 done
 
-PG_VERSION=$(cat /var/db/postgres/pg_version 2>/dev/null || echo "17")
-PGDATA="/var/db/postgres/data${PG_VERSION}"
+# Use Linux-compatible path for drop-in replacement
+PGDATA="/var/lib/postgresql/data"
 
-echo "Setting up PostgreSQL ${PG_VERSION}..."
+echo "Setting up PostgreSQL..."
 
 # Create required directories
 mkdir -p "$PGDATA" /var/run/postgresql
 
 # Set ownership (bsd:bsd is UID/GID 1000:1000)
-chown -R bsd:bsd /var/db/postgres /var/run/postgresql
+chown -R bsd:bsd /var/lib/postgresql /var/run/postgresql
 
 echo "PostgreSQL configuration complete"

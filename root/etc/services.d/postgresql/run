@@ -1,12 +1,12 @@
 #!/bin/sh
 # PostgreSQL s6 service
 
-PG_VERSION=$(cat /var/db/postgres/pg_version 2>/dev/null || echo "17")
-PGDATA="/var/db/postgres/data${PG_VERSION}"
+# Use Linux-compatible path for drop-in replacement
+PGDATA="/var/lib/postgresql/data"
 
 # Initialize database if needed
 if [ ! -f "$PGDATA/PG_VERSION" ]; then
-    echo "Initializing PostgreSQL ${PG_VERSION} database..."
+    echo "Initializing PostgreSQL database..."
 
     # Build initdb command with optional args
     INITDB_CMD="/usr/local/bin/initdb -D $PGDATA -E UTF8 --locale=C"
@@ -79,5 +79,5 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
     /usr/local/bin/s6-setuidgid bsd /usr/local/bin/pg_ctl -D "$PGDATA" -w stop
 fi
 
-echo "Starting PostgreSQL ${PG_VERSION}..."
+echo "Starting PostgreSQL..."
 exec /usr/local/bin/s6-setuidgid bsd /usr/local/bin/postgres -D "$PGDATA"
