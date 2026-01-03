@@ -27,13 +27,23 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
     # Start temporarily to create user/database and run init scripts
     /usr/local/bin/s6-setuidgid bsd /usr/local/bin/pg_ctl -D "$PGDATA" -w start
 
-    # Create user and database if specified
-    if [ -n "$POSTGRES_PASSWORD" ]; then
-        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -c "ALTER USER $POSTGRES_USER PASSWORD '$POSTGRES_PASSWORD'" 2>/dev/null
+    # Create user if not default 'bsd' user
+    PGUSER="${POSTGRES_USER:-postgres}"
+    if [ "$PGUSER" != "bsd" ]; then
+        echo "Creating user '$PGUSER'..."
+        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d postgres -c "CREATE ROLE $PGUSER WITH LOGIN SUPERUSER" 2>/dev/null || true
     fi
 
+    # Set password if specified
+    if [ -n "$POSTGRES_PASSWORD" ]; then
+        echo "Setting password for '$PGUSER'..."
+        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d postgres -c "ALTER ROLE $PGUSER PASSWORD '$POSTGRES_PASSWORD'" 2>/dev/null
+    fi
+
+    # Create database if specified and not 'postgres'
     if [ -n "$POSTGRES_DB" ] && [ "$POSTGRES_DB" != "postgres" ]; then
-        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/createdb "$POSTGRES_DB" 2>/dev/null
+        echo "Creating database '$POSTGRES_DB'..."
+        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/createdb -O "$PGUSER" "$POSTGRES_DB" 2>/dev/null || true
     fi
 
     # Run init scripts from /docker-entrypoint-initdb.d/

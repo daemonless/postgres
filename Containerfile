@@ -4,7 +4,7 @@ FROM ghcr.io/daemonless/base:${BASE_VERSION}
 ARG PG_VERSION
 
 ARG FREEBSD_ARCH=amd64
-ARG PACKAGES="postgresql${PG_VERSION}-server postgresql${PG_VERSION}-client"
+ARG PACKAGES="postgresql${PG_VERSION}-server postgresql${PG_VERSION}-client postgresql${PG_VERSION}-contrib"
 ARG UPSTREAM_URL="https://www.postgresql.org/docs/release/"
 ARG HEALTHCHECK_ENDPOINT="pg_isready -q"
 
