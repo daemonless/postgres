@@ -2,6 +2,8 @@
 
 PostgreSQL database server on FreeBSD.
 
+> **Requires [patched ocijail](https://github.com/daemonless/daemonless#ocijail-patch)** for SysV IPC support (`org.freebsd.jail.allow.sysvipc=true`)
+
 ## Quick Start
 
 ```bash
@@ -87,7 +89,6 @@ Scripts run in sorted filename order after database creation.
 ## Notes
 
 - **User:** `bsd` (UID/GID 1000)
-- **SysV IPC:** Requires `--annotation 'org.freebsd.jail.allow.sysvipc=true'`
 
 ## Links
 
