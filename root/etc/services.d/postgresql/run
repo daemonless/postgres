@@ -24,6 +24,11 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
     # Listen on all interfaces
     echo "listen_addresses = '*'" >> "$PGDATA/postgresql.conf"
 
+    # Add shared_preload_libraries if specified (required for extensions like vchord)
+    if [ -n "$POSTGRES_SHARED_PRELOAD_LIBRARIES" ]; then
+        echo "shared_preload_libraries = '$POSTGRES_SHARED_PRELOAD_LIBRARIES'" >> "$PGDATA/postgresql.conf"
+    fi
+
     # Start temporarily to create user/database and run init scripts
     /usr/local/bin/s6-setuidgid bsd /usr/local/bin/pg_ctl -D "$PGDATA" -w start
 
