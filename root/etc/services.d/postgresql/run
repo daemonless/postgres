@@ -17,16 +17,16 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
 
     # Configure authentication method (default: scram-sha-256)
     AUTH_METHOD="${POSTGRES_HOST_AUTH_METHOD:-scram-sha-256}"
-    echo "host all all 0.0.0.0/0 $AUTH_METHOD" >> "$PGDATA/pg_hba.conf"
-    echo "host all all ::/0 $AUTH_METHOD" >> "$PGDATA/pg_hba.conf"
-    echo "local all all trust" >> "$PGDATA/pg_hba.conf"
+    /usr/local/bin/s6-setuidgid bsd sh -c "echo 'host all all 0.0.0.0/0 $AUTH_METHOD' >> '$PGDATA/pg_hba.conf'"
+    /usr/local/bin/s6-setuidgid bsd sh -c "echo 'host all all ::/0 $AUTH_METHOD' >> '$PGDATA/pg_hba.conf'"
+    /usr/local/bin/s6-setuidgid bsd sh -c "echo 'local all all trust' >> '$PGDATA/pg_hba.conf'"
 
     # Listen on all interfaces
-    echo "listen_addresses = '*'" >> "$PGDATA/postgresql.conf"
+    /usr/local/bin/s6-setuidgid bsd sh -c "echo \"listen_addresses = '*'\" >> '$PGDATA/postgresql.conf'"
 
     # Add shared_preload_libraries if specified (required for extensions like vchord)
     if [ -n "$POSTGRES_SHARED_PRELOAD_LIBRARIES" ]; then
-        echo "shared_preload_libraries = '$POSTGRES_SHARED_PRELOAD_LIBRARIES'" >> "$PGDATA/postgresql.conf"
+        /usr/local/bin/s6-setuidgid bsd sh -c "echo \"shared_preload_libraries = '$POSTGRES_SHARED_PRELOAD_LIBRARIES'\" >> '$PGDATA/postgresql.conf'"
     fi
 
     # Start temporarily to create user/database and run init scripts

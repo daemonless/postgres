@@ -20,7 +20,8 @@ LABEL org.opencontainers.image.title="PostgreSQL ${PG_VERSION}" \
     io.daemonless.arch="${FREEBSD_ARCH}" \
     io.daemonless.category="Databases" \
     io.daemonless.upstream-url="${UPSTREAM_URL}" \
-    io.daemonless.packages="${PACKAGES}"
+    io.daemonless.packages="${PACKAGES}" \
+    org.freebsd.jail.allow.sysvipc="required"
 
 # Install PostgreSQL
 RUN pkg update && \
