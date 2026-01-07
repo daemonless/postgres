@@ -1,0 +1,4 @@
+icon: ':material-database:'
+cit:
+  mode: port
+  port: 5432
