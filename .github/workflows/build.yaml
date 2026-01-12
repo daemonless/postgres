@@ -11,7 +11,7 @@ on:
 jobs:
   # PostgreSQL 14 (quarterly packages)
   build-14:
-    uses: daemonless/daemonless/.github/workflows/build-app.yml@main
+    uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
     with:
       image_name: postgres
       image_tag: "14"
@@ -21,7 +21,7 @@ jobs:
 
   # PostgreSQL 14 (latest packages)
   build-14-pkg-latest:
-    uses: daemonless/daemonless/.github/workflows/build-app.yml@main
+    uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
     with:
       image_name: postgres
       image_tag: "14-pkg-latest"
@@ -30,7 +30,7 @@ jobs:
 
   # PostgreSQL 17 (quarterly packages)
   build-17:
-    uses: daemonless/daemonless/.github/workflows/build-app.yml@main
+    uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
     with:
       image_name: postgres
       image_tag: "17"
@@ -40,7 +40,7 @@ jobs:
 
   # PostgreSQL 17 (latest packages)
   build-17-pkg-latest:
-    uses: daemonless/daemonless/.github/workflows/build-app.yml@main
+    uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
     with:
       image_name: postgres
       image_tag: "17-pkg-latest"

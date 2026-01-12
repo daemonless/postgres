@@ -11,17 +11,24 @@ ARG HEALTHCHECK_ENDPOINT="pg_isready -q"
 ENV HEALTHCHECK_URL="${HEALTHCHECK_ENDPOINT}"
 
 # --- Metadata (Injected by Generator) ---
-LABEL org.opencontainers.image.title="PostgreSQL ${PG_VERSION}" \
-      org.opencontainers.image.description="The World's Most Advanced Open Source Relational Database on FreeBSD." \
-      org.opencontainers.image.source="https://github.com/daemonless/postgres" \
-      org.opencontainers.image.url="https://www.postgresql.org/" \
+LABEL org.opencontainers.image.title="{{ title }} ${PG_VERSION}" \
+      org.opencontainers.image.description="{{ description }}" \
+      org.opencontainers.image.source="{{ repo_url }}" \
+      org.opencontainers.image.url="{{ web_url }}" \
       org.opencontainers.image.documentation="https://www.postgresql.org/docs/${PG_VERSION}/" \
       org.opencontainers.image.licenses="PostgreSQL" \
       org.opencontainers.image.vendor="daemonless" \
       org.opencontainers.image.authors="daemonless" \
-      io.daemonless.category="Databases" \
-      io.daemonless.port="5432" \
-      io.daemonless.volumes="/var/lib/postgresql/data" \
+      io.daemonless.category="{{ category }}" \
+{%- if ports %}
+      io.daemonless.port="{{ ports[0].port }}" \
+{%- endif %}
+{%- if volumes %}
+      io.daemonless.volumes="{{ volumes | map(attribute='path') | join(',') }}" \
+{%- endif %}
+{%- if mlock %}
+      org.freebsd.jail.allow.mlock="required" \
+{%- endif %}
       org.freebsd.jail.allow.sysvipc="required" \
       io.daemonless.arch="${FREEBSD_ARCH}" \
       io.daemonless.pkg-source="containerfile" \
@@ -61,7 +68,11 @@ ENV PGDATA="/var/lib/postgresql/data" \
     POSTGRES_HOST_AUTH_METHOD="scram-sha-256"
 
 # --- Expose (Injected by Generator) ---
-EXPOSE 5432
+{%- if ports %}
+EXPOSE {{ ports | map(attribute='port') | join(' ') }}
+{%- endif %}
 
 # --- Volumes (Injected by Generator) ---
-VOLUME /var/lib/postgresql/data
+{%- if volumes %}
+VOLUME {{ volumes | map(attribute='path') | join(' ') }}
+{%- endif %}

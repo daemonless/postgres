@@ -1,0 +1,49 @@
+name: postgres
+
+x-daemonless:
+  title: "PostgreSQL"
+  icon: ":simple-postgresql:"
+  category: "Databases"
+  description: "The World's Most Advanced Open Source Relational Database on FreeBSD."
+  upstream_url: "https://www.postgresql.org/"
+  web_url: "https://www.postgresql.org/"
+  freshports_url: "https://www.freshports.org/databases/postgresql17-server/"
+  user: "bsd"
+  mlock: false
+  upstream_binary: false
+  
+  docs:
+    env:
+      POSTGRES_USER: "Database superuser name (default: postgres)"
+      POSTGRES_PASSWORD: "Database superuser password"
+      POSTGRES_DB: "Default database to create (default: same as user)"
+      POSTGRES_INITDB_ARGS: "Additional arguments for initdb"
+      POSTGRES_HOST_AUTH_METHOD: "Authentication method (default: scram-sha-256)"
+    volumes:
+      /var/lib/postgresql/data: "Database data directory"
+    ports:
+      5432: "PostgreSQL port"
+
+services:
+  postgres:
+    image: ghcr.io/daemonless/postgres:latest
+    container_name: postgres
+    restart: unless-stopped
+    
+    # Needs SysV IPC
+    annotations:
+      org.freebsd.jail.allow.sysvipc: "true"
+
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+
+    volumes:
+      - /path/to/containers/postgres:/var/lib/postgresql/data
+
+    ports:
+      - "5432:5432"
