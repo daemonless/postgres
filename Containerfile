@@ -6,9 +6,6 @@ ARG PG_VERSION
 ARG FREEBSD_ARCH=amd64
 ARG PACKAGES="postgresql${PG_VERSION}-server postgresql${PG_VERSION}-client postgresql${PG_VERSION}-contrib"
 ARG UPSTREAM_URL="https://www.postgresql.org/docs/release/"
-ARG HEALTHCHECK_ENDPOINT="pg_isready -q"
-
-ENV HEALTHCHECK_URL="${HEALTHCHECK_ENDPOINT}"
 
 # --- Metadata (Injected by Generator) ---
 LABEL org.opencontainers.image.title="PostgreSQL ${PG_VERSION}" \
