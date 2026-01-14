@@ -26,7 +26,7 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data
+      - /path/to/containers/postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
     restart: unless-stopped
@@ -43,7 +43,7 @@ podman run -d --name postgres \
   -e PUID=@PUID@ \
   -e PGID=@PGID@ \
   -e TZ=@TZ@ \
-  -v /path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data \ 
+  -v /path/to/containers/postgres:/var/lib/postgresql/data \ 
   ghcr.io/daemonless/postgres:latest
 ```
 Access at: `http://localhost:5432`
@@ -61,17 +61,16 @@ Access at: `http://localhost:5432`
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "postgres"
-      PUID: "1000"
-      PGID: "1000"
-      TZ: "UTC"
+      PUID: "@PUID@"
+      PGID: "@PGID@"
+      TZ: "@TZ@"
     ports:
       - "5432:5432"
     volumes:
-      - "/path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data"
+      - "/path/to/containers/postgres:/var/lib/postgresql/data"
 ```
 
 ## Configuration
-
 ### Environment Variables
 
 | Variable | Default | Description |
@@ -82,13 +81,11 @@ Access at: `http://localhost:5432`
 | `PUID` | `1000` |  |
 | `PGID` | `1000` |  |
 | `TZ` | `UTC` |  |
-
 ### Volumes
 
 | Path | Description |
 |------|-------------|
 | `/var/lib/postgresql/data` | Database data directory |
-
 ### Ports
 
 | Port | Protocol | Description |
