@@ -1,7 +1,6 @@
-# Woodpecker CI configuration for PostgreSQL
-
+# Woodpecker CI configuration (Simplified)
 steps:
-  - name: build-14
+  - name: build
     image: /bin/sh
     environment:
       GITHUB_TOKEN:
@@ -9,42 +8,8 @@ steps:
       GITHUB_ACTOR:
         from_secret: GITHUB_USER
     commands:
-      - |
-        mkdir -p scripts
-        fetch -qo scripts/build.sh \
-          "https://raw.githubusercontent.com/daemonless/daemonless/build-v1.2.0/scripts/build.sh"
-        chmod +x scripts/build.sh
-        ./scripts/build.sh \
-          --doas \
-          --registry ghcr.io \
-          --image ghcr.io/daemonless/postgres \
-          --tag 14 \
-          --build-arg PG_VERSION=14 \
-          --skip-wip \
-          --login --push
-
-  - name: build-17
-    image: /bin/sh
-    environment:
-      GITHUB_TOKEN:
-        from_secret: GITHUB_TOKEN
-      GITHUB_ACTOR:
-        from_secret: GITHUB_USER
-    commands:
-      - |
-        mkdir -p scripts
-        fetch -qo scripts/build.sh \
-          "https://raw.githubusercontent.com/daemonless/daemonless/build-v1.2.0/scripts/build.sh"
-        chmod +x scripts/build.sh
-        ./scripts/build.sh \
-          --doas \
-          --registry ghcr.io \
-          --image ghcr.io/daemonless/postgres \
-          --tag 17 \
-          --tag latest \
-          --build-arg PG_VERSION=17 \
-          --skip-wip \
-          --login --push
+      - fetch -qo woodpecker-build.sh "https://gitea.ahze.lan/ahze/daemonless/raw/branch/main/scripts/woodpecker-build.sh"
+      - sh woodpecker-build.sh postgres
 
 when:
   - event: push
