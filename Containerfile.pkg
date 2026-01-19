@@ -27,7 +27,7 @@ LABEL org.opencontainers.image.title="PostgreSQL ${PG_VERSION}" \
       io.daemonless.volumes="/var/lib/postgresql/data" \
       org.freebsd.jail.allow.sysvipc="required" \
       io.daemonless.arch="${FREEBSD_ARCH}" \
-      io.daemonless.pkg-source="containerfile" \
+      io.daemonless.pkg-source="pkg" \
       io.daemonless.upstream-url="${UPSTREAM_URL}" \
       io.daemonless.packages="${PACKAGES}"
 
