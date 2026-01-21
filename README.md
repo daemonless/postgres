@@ -11,6 +11,7 @@ The World's Most Advanced Open Source Relational Database on FreeBSD.
 |---|---|
 | **Port** | 5432 |
 | **Registry** | `ghcr.io/daemonless/postgres` |
+| **Docs** | [daemonless.io/images/postgres](https://daemonless.io/images/postgres/) |
 | **Source** | [https://www.postgresql.org/](https://www.postgresql.org/) |
 | **Website** | [https://www.postgresql.org/](https://www.postgresql.org/) |
 
