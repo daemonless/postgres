@@ -4,24 +4,24 @@ cit:
   mode: port
   port: 5432
 
-# Multi-version tracking for generate_versions.py
-versions:
-  type: multi-version
+build:
   variants:
-    - id: "14"
-      pkg_name: postgresql14-server
-      build_args: { PG_VERSION: "14", BASE_VERSION: "15-quarterly" }
-      tags: ["14", "14-pkg"]
-    - id: "14-pkg-latest"
-      pkg_name: postgresql14-server
-      build_args: { PG_VERSION: "14", BASE_VERSION: "15" }
-      tags: ["14-pkg-latest"]
-    - id: "17"
-      pkg_name: postgresql17-server
-      build_args: { PG_VERSION: "17", BASE_VERSION: "15-quarterly" }
-      tags: ["17", "17-pkg", "pkg", "latest"]
-      default: true
-    - id: "17-pkg-latest"
-      pkg_name: postgresql17-server
-      build_args: { PG_VERSION: "17", BASE_VERSION: "15" }
-      tags: ["17-pkg-latest", "pkg-latest"]
+    - tag: "14"
+      args:
+        PG_VERSION: "14"
+        BASE_VERSION: "15-quarterly"
+      aliases: ["14-pkg"]
+    - tag: "14-pkg-latest"
+      args:
+        PG_VERSION: "14"
+        BASE_VERSION: "15"
+    - tag: "17"
+      args:
+        PG_VERSION: "17"
+        BASE_VERSION: "15-quarterly"
+      aliases: ["17-pkg", "pkg", "latest"]
+    - tag: "17-pkg-latest"
+      args:
+        PG_VERSION: "17"
+        BASE_VERSION: "15"
+      aliases: ["pkg-latest"]

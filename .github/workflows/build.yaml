@@ -9,41 +9,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  # PostgreSQL 14 (quarterly packages)
-  build-14:
+  build:
     uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
     with:
       image_name: postgres
-      image_tag: "14"
-      build_args: "PG_VERSION=14,BASE_VERSION=15-quarterly"
-      extra_tags: "14-pkg"
-    secrets: inherit
-
-  # PostgreSQL 14 (latest packages)
-  build-14-pkg-latest:
-    uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
-    with:
-      image_name: postgres
-      image_tag: "14-pkg-latest"
-      build_args: "PG_VERSION=14,BASE_VERSION=15"
-    secrets: inherit
-
-  # PostgreSQL 17 (quarterly packages)
-  build-17:
-    uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
-    with:
-      image_name: postgres
-      image_tag: "17"
-      build_args: "PG_VERSION=17,BASE_VERSION=15-quarterly"
-      extra_tags: "17-pkg,pkg,latest"
-    secrets: inherit
-
-  # PostgreSQL 17 (latest packages)
-  build-17-pkg-latest:
-    uses: daemonless/daemonless/.github/workflows/build-app.yaml@main
-    with:
-      image_name: postgres
-      image_tag: "17-pkg-latest"
-      build_args: "PG_VERSION=17,BASE_VERSION=15"
-      extra_tags: "pkg-latest"
     secrets: inherit
