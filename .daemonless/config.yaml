@@ -7,23 +7,28 @@ cit:
 build:
   variants:
     - tag: "14"
+      pkg_name: postgresql14-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "14"
         BASE_VERSION: "15-quarterly"
       aliases: ["14-pkg"]
     - tag: "14-pkg-latest"
+      pkg_name: postgresql14-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "14"
         BASE_VERSION: "15"
     - tag: "17"
+      pkg_name: postgresql17-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "17"
         BASE_VERSION: "15-quarterly"
       aliases: ["17-pkg", "pkg", "latest"]
+      default: true
     - tag: "17-pkg-latest"
+      pkg_name: postgresql17-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "17"
