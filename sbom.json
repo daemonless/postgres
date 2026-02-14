@@ -1,11 +1,12 @@
 {
   "image": "postgres",
-  "generated": "2026-02-01T23:43:21Z",
+  "generated": "2026-02-14T19:19:39Z",
   "tags": {
     "14-pkg-latest": {
-      "app_version": "14.20",
-      "source": "freebsd-quarterly",
-      "generated": "2026-02-01T23:42:39Z",
+      "arch": "amd64",
+      "app_version": "14.20_1",
+      "source": "pkg",
+      "generated": "2026-02-14T19:19:26Z",
       "packages": {
         "freebsd": [
           {
@@ -14,7 +15,7 @@
           },
           {
             "name": "FreeBSD-blocklist",
-            "version": "15.0"
+            "version": "15.0p3"
           },
           {
             "name": "FreeBSD-bzip2-lib",
@@ -162,7 +163,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.14.6"
+            "version": "2.15.1"
           },
           {
             "name": "llvm19",
@@ -202,7 +203,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.14_1"
+            "version": "3.11.14_2"
           },
           {
             "name": "readline",
@@ -226,23 +227,37 @@
           }
         ],
         "dotnet": [],
-        "python": [],
+        "go": [],
+        "java": [],
         "node": [],
-        "go": []
+        "php": [],
+        "python": [
+          {
+            "name": "example",
+            "version": "21.12"
+          }
+        ],
+        "ruby": [],
+        "rust": []
       },
       "summary": {
         "freebsd": 54,
         "dotnet": 0,
-        "python": 0,
-        "node": 0,
         "go": 0,
-        "total": 54
+        "java": 0,
+        "node": 0,
+        "php": 0,
+        "python": 1,
+        "ruby": 0,
+        "rust": 0,
+        "total": 55
       }
     },
     "14": {
-      "app_version": "14.20",
-      "source": "freebsd-quarterly",
-      "generated": "2026-02-01T23:42:33Z",
+      "arch": "amd64",
+      "app_version": "14.20_1",
+      "source": "pkg",
+      "generated": "2026-02-14T19:18:29Z",
       "packages": {
         "freebsd": [
           {
@@ -251,7 +266,7 @@
           },
           {
             "name": "FreeBSD-blocklist",
-            "version": "15.0"
+            "version": "15.0p3"
           },
           {
             "name": "FreeBSD-bzip2-lib",
@@ -399,7 +414,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.14.6"
+            "version": "2.15.1"
           },
           {
             "name": "llvm19",
@@ -439,7 +454,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.14_1"
+            "version": "3.11.14_2"
           },
           {
             "name": "readline",
@@ -463,23 +478,37 @@
           }
         ],
         "dotnet": [],
-        "python": [],
+        "go": [],
+        "java": [],
         "node": [],
-        "go": []
+        "php": [],
+        "python": [
+          {
+            "name": "example",
+            "version": "21.12"
+          }
+        ],
+        "ruby": [],
+        "rust": []
       },
       "summary": {
         "freebsd": 54,
         "dotnet": 0,
-        "python": 0,
-        "node": 0,
         "go": 0,
-        "total": 54
+        "java": 0,
+        "node": 0,
+        "php": 0,
+        "python": 1,
+        "ruby": 0,
+        "rust": 0,
+        "total": 55
       }
     },
     "17-pkg-latest": {
-      "app_version": "17.7",
-      "source": "freebsd-quarterly",
-      "generated": "2026-02-01T23:41:11Z",
+      "arch": "amd64",
+      "app_version": "17.7_1",
+      "source": "pkg",
+      "generated": "2026-02-14T19:18:16Z",
       "packages": {
         "freebsd": [
           {
@@ -488,7 +517,7 @@
           },
           {
             "name": "FreeBSD-blocklist",
-            "version": "15.0"
+            "version": "15.0p3"
           },
           {
             "name": "FreeBSD-bzip2-lib",
@@ -636,7 +665,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.14.6"
+            "version": "2.15.1"
           },
           {
             "name": "llvm19",
@@ -676,7 +705,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.14_1"
+            "version": "3.11.14_2"
           },
           {
             "name": "readline",
@@ -700,23 +729,37 @@
           }
         ],
         "dotnet": [],
-        "python": [],
+        "go": [],
+        "java": [],
         "node": [],
-        "go": []
+        "php": [],
+        "python": [
+          {
+            "name": "example",
+            "version": "21.12"
+          }
+        ],
+        "ruby": [],
+        "rust": []
       },
       "summary": {
         "freebsd": 54,
         "dotnet": 0,
-        "python": 0,
-        "node": 0,
         "go": 0,
-        "total": 54
+        "java": 0,
+        "node": 0,
+        "php": 0,
+        "python": 1,
+        "ruby": 0,
+        "rust": 0,
+        "total": 55
       }
     },
     "17": {
-      "app_version": "17.7",
-      "source": "freebsd-quarterly",
-      "generated": "2026-02-01T23:43:10Z",
+      "arch": "amd64",
+      "app_version": "17.7_1",
+      "source": "pkg",
+      "generated": "2026-02-14T19:19:29Z",
       "packages": {
         "freebsd": [
           {
@@ -725,7 +768,7 @@
           },
           {
             "name": "FreeBSD-blocklist",
-            "version": "15.0"
+            "version": "15.0p3"
           },
           {
             "name": "FreeBSD-bzip2-lib",
@@ -873,7 +916,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.14.6"
+            "version": "2.15.1"
           },
           {
             "name": "llvm19",
@@ -913,7 +956,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.14_1"
+            "version": "3.11.14_2"
           },
           {
             "name": "readline",
@@ -937,17 +980,30 @@
           }
         ],
         "dotnet": [],
-        "python": [],
+        "go": [],
+        "java": [],
         "node": [],
-        "go": []
+        "php": [],
+        "python": [
+          {
+            "name": "example",
+            "version": "21.12"
+          }
+        ],
+        "ruby": [],
+        "rust": []
       },
       "summary": {
         "freebsd": 54,
         "dotnet": 0,
-        "python": 0,
-        "node": 0,
         "go": 0,
-        "total": 54
+        "java": 0,
+        "node": 0,
+        "php": 0,
+        "python": 1,
+        "ruby": 0,
+        "rust": 0,
+        "total": 55
       }
     }
   }
