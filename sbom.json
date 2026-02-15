@@ -1,12 +1,12 @@
 {
   "image": "postgres",
-  "generated": "2026-02-14T21:27:17Z",
+  "generated": "2026-02-15T09:29:05Z",
   "tags": {
     "14-pkg-latest": {
       "arch": "amd64",
       "app_version": "14.20_1",
       "source": "pkg",
-      "generated": "2026-02-14T21:25:57Z",
+      "generated": "2026-02-15T09:28:43Z",
       "packages": {
         "freebsd": [
           {
@@ -257,7 +257,7 @@
       "arch": "amd64",
       "app_version": "14.20_1",
       "source": "pkg",
-      "generated": "2026-02-14T21:26:45Z",
+      "generated": "2026-02-15T09:28:54Z",
       "packages": {
         "freebsd": [
           {
@@ -508,7 +508,7 @@
       "arch": "amd64",
       "app_version": "17.7_1",
       "source": "pkg",
-      "generated": "2026-02-14T21:26:20Z",
+      "generated": "2026-02-15T09:28:33Z",
       "packages": {
         "freebsd": [
           {
@@ -759,7 +759,7 @@
       "arch": "amd64",
       "app_version": "17.7_1",
       "source": "pkg",
-      "generated": "2026-02-14T21:27:05Z",
+      "generated": "2026-02-15T09:28:49Z",
       "packages": {
         "freebsd": [
           {
