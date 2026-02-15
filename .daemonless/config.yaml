@@ -18,7 +18,7 @@ build:
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "14"
-        BASE_VERSION: "15"
+        BASE_VERSION: "15-latest"
     - tag: "17"
       pkg_name: postgresql17-server
       containerfile: Containerfile.pkg
@@ -32,5 +32,5 @@ build:
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "17"
-        BASE_VERSION: "15"
+        BASE_VERSION: "15-latest"
       aliases: ["pkg-latest"]

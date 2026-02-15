@@ -51,7 +51,7 @@ RUN chmod +x /etc/services.d/*/run /etc/cont-init.d/* /healthz 2>/dev/null || tr
 # Store PG version for scripts
 RUN mkdir -p /var/db/postgres && echo "${PG_VERSION}" > /var/db/postgres/pg_version
 
-# Extract package version for tagging (e.g., 17.7 or 14.20)
+# Extract package version for tagging (e.g., 17.7_1 or 14.20_1)
 RUN mkdir -p /app && \
     pkg query '%v' postgresql${PG_VERSION}-server > /app/version
 
