@@ -1,12 +1,12 @@
 {
   "image": "postgres",
-  "generated": "2026-02-15T13:31:32Z",
+  "generated": "2026-02-16T09:05:46Z",
   "tags": {
     "14-pkg-latest": {
       "arch": "amd64",
-      "app_version": "14.20_1",
+      "app_version": "14.21",
       "source": "pkg",
-      "generated": "2026-02-15T13:30:56Z",
+      "generated": "2026-02-16T09:05:34Z",
       "packages": {
         "freebsd": [
           {
@@ -191,15 +191,15 @@
           },
           {
             "name": "postgresql14-client",
-            "version": "14.20_2"
+            "version": "14.21_2"
           },
           {
             "name": "postgresql14-contrib",
-            "version": "14.20_1"
+            "version": "14.21"
           },
           {
             "name": "postgresql14-server",
-            "version": "14.20_1"
+            "version": "14.21"
           },
           {
             "name": "python311",
@@ -257,7 +257,7 @@
       "arch": "amd64",
       "app_version": "14.20_1",
       "source": "pkg",
-      "generated": "2026-02-15T13:30:14Z",
+      "generated": "2026-02-16T09:05:21Z",
       "packages": {
         "freebsd": [
           {
@@ -506,9 +506,9 @@
     },
     "17-pkg-latest": {
       "arch": "amd64",
-      "app_version": "17.7_1",
+      "app_version": "17.8",
       "source": "pkg",
-      "generated": "2026-02-15T13:31:19Z",
+      "generated": "2026-02-16T09:04:57Z",
       "packages": {
         "freebsd": [
           {
@@ -693,15 +693,15 @@
           },
           {
             "name": "postgresql17-client",
-            "version": "17.7_2"
+            "version": "17.8_2"
           },
           {
             "name": "postgresql17-contrib",
-            "version": "17.7_1"
+            "version": "17.8_1"
           },
           {
             "name": "postgresql17-server",
-            "version": "17.7_1"
+            "version": "17.8"
           },
           {
             "name": "python311",
@@ -759,7 +759,7 @@
       "arch": "amd64",
       "app_version": "17.7_1",
       "source": "pkg",
-      "generated": "2026-02-15T13:30:41Z",
+      "generated": "2026-02-16T09:04:56Z",
       "packages": {
         "freebsd": [
           {
