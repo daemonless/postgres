@@ -5,15 +5,30 @@ Source: dbuild templates
 
 # PostgreSQL
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/daemonless/postgres/build.yaml?style=flat-square&label=Build&color=green)](https://github.com/daemonless/postgres/actions)
+[![Last Commit](https://img.shields.io/github/last-commit/daemonless/postgres?style=flat-square&label=Last+Commit&color=blue)](https://github.com/daemonless/postgres/commits)
+
 The World's Most Advanced Open Source Relational Database on FreeBSD.
 
 | | |
 |---|---|
 | **Port** | 5432 |
 | **Registry** | `ghcr.io/daemonless/postgres` |
-| **Docs** | [daemonless.io/images/postgres](https://daemonless.io/images/postgres/) |
 | **Source** | [https://www.postgresql.org/](https://www.postgresql.org/) |
 | **Website** | [https://www.postgresql.org/](https://www.postgresql.org/) |
+
+## Version Tags
+
+| Tag | Description | Best For |
+| :--- | :--- | :--- |
+| `14` / `14-pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
+| `14-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
+| `17` / `17-pkg` / `latest` / `pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Most users. Matches Linux Docker behavior. |
+| `17-pkg-latest` / `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
+
+## Prerequisites
+
+Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
 
@@ -32,9 +47,11 @@ services:
       - PGID=1000
       - TZ=UTC
     volumes:
-      - /path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data
+      - "/path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data"
     ports:
       - 5432:5432
+    annotations:
+      org.freebsd.jail.allow.sysvipc: "true"
     restart: unless-stopped
 ```
 
@@ -47,13 +64,12 @@ podman run -d --name postgres \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=postgres \
   -e POSTGRES_DB=postgres \
-  -e PUID=@PUID@ \
-  -e PGID=@PGID@ \
-  -e TZ=@TZ@ \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=UTC \
   -v /path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data \
   ghcr.io/daemonless/postgres:latest
 ```
-Access at: `http://localhost:5432`
 
 ### Ansible
 
@@ -68,16 +84,21 @@ Access at: `http://localhost:5432`
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "postgres"
-      PUID: "@PUID@"
-      PGID: "@PGID@"
-      TZ: "@TZ@"
+      PUID: "1000"
+      PGID: "1000"
+      TZ: "UTC"
     ports:
       - "5432:5432"
     volumes:
       - "/path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data"
+    annotation:
+      org.freebsd.jail.allow.sysvipc: "true"
 ```
 
-## Configuration
+Access at: `http://localhost:5432`
+
+## Parameters
+
 ### Environment Variables
 
 | Variable | Default | Description |
@@ -88,19 +109,23 @@ Access at: `http://localhost:5432`
 | `PUID` | `1000` |  |
 | `PGID` | `1000` |  |
 | `TZ` | `UTC` |  |
+
 ### Volumes
 
 | Path | Description |
 |------|-------------|
 | `/var/lib/postgresql/data` | Database data directory |
+
 ### Ports
 
 | Port | Protocol | Description |
 |------|----------|-------------|
 | `5432` | TCP | PostgreSQL port |
 
-## Notes
+**Architectures:** amd64
+**User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
+**Base:** FreeBSD 15.0
 
-- **Architectures:** amd64
-- **User:** `bsd` (UID/GID set via PUID/PGID)
-- **Base:** Built on `ghcr.io/daemonless/base` (FreeBSD)
+---
+
+Need help? Join our [Discord](https://discord.gg/Kb9tkhecZT) community.
