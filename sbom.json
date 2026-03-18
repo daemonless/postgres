@@ -1,12 +1,12 @@
 {
   "image": "postgres",
-  "generated": "2026-03-02T22:16:07Z",
+  "generated": "2026-03-18T08:44:31Z",
   "tags": {
     "14-pkg-latest": {
       "arch": "amd64",
       "app_version": "14.22",
       "source": "pkg",
-      "generated": "2026-03-02T22:15:03Z",
+      "generated": "2026-03-18T08:42:58Z",
       "packages": {
         "freebsd": [
           {
@@ -131,7 +131,7 @@
           },
           {
             "name": "execline",
-            "version": "2.9.7.0"
+            "version": "2.9.8.1"
           },
           {
             "name": "gettext-runtime",
@@ -163,7 +163,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.15.1_1"
+            "version": "2.15.2"
           },
           {
             "name": "llvm19",
@@ -183,11 +183,11 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.0_1"
+            "version": "5.42.1"
           },
           {
             "name": "pkg",
-            "version": "2.5.1"
+            "version": "2.6.2_1"
           },
           {
             "name": "postgresql14-client",
@@ -203,7 +203,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.14_2"
+            "version": "3.11.15"
           },
           {
             "name": "readline",
@@ -211,15 +211,15 @@
           },
           {
             "name": "s6",
-            "version": "2.13.2.0"
+            "version": "2.14.0.1"
           },
           {
             "name": "s6-rc",
-            "version": "0.5.6.0"
+            "version": "0.6.0.0"
           },
           {
             "name": "skalibs",
-            "version": "2.14.4.0"
+            "version": "2.14.5.1"
           },
           {
             "name": "zstd",
@@ -255,9 +255,9 @@
     },
     "14": {
       "arch": "amd64",
-      "app_version": "14.20_1",
+      "app_version": "14.22",
       "source": "pkg",
-      "generated": "2026-03-02T22:15:15Z",
+      "generated": "2026-03-18T08:42:38Z",
       "packages": {
         "freebsd": [
           {
@@ -414,7 +414,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.15.1"
+            "version": "2.15.2"
           },
           {
             "name": "llvm19",
@@ -442,19 +442,19 @@
           },
           {
             "name": "postgresql14-client",
-            "version": "14.20_2"
+            "version": "14.22"
           },
           {
             "name": "postgresql14-contrib",
-            "version": "14.20_1"
+            "version": "14.22"
           },
           {
             "name": "postgresql14-server",
-            "version": "14.20_1"
+            "version": "14.22"
           },
           {
             "name": "python311",
-            "version": "3.11.14_2"
+            "version": "3.11.15"
           },
           {
             "name": "readline",
@@ -508,7 +508,7 @@
       "arch": "amd64",
       "app_version": "17.9",
       "source": "pkg",
-      "generated": "2026-03-02T22:15:21Z",
+      "generated": "2026-03-18T08:44:19Z",
       "packages": {
         "freebsd": [
           {
@@ -633,7 +633,7 @@
           },
           {
             "name": "execline",
-            "version": "2.9.7.0"
+            "version": "2.9.8.1"
           },
           {
             "name": "gettext-runtime",
@@ -665,7 +665,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.15.1_1"
+            "version": "2.15.2"
           },
           {
             "name": "llvm19",
@@ -685,11 +685,11 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.0_1"
+            "version": "5.42.1"
           },
           {
             "name": "pkg",
-            "version": "2.5.1"
+            "version": "2.6.2_1"
           },
           {
             "name": "postgresql17-client",
@@ -705,7 +705,7 @@
           },
           {
             "name": "python311",
-            "version": "3.11.14_2"
+            "version": "3.11.15"
           },
           {
             "name": "readline",
@@ -713,15 +713,15 @@
           },
           {
             "name": "s6",
-            "version": "2.13.2.0"
+            "version": "2.14.0.1"
           },
           {
             "name": "s6-rc",
-            "version": "0.5.6.0"
+            "version": "0.6.0.0"
           },
           {
             "name": "skalibs",
-            "version": "2.14.4.0"
+            "version": "2.14.5.1"
           },
           {
             "name": "zstd",
@@ -757,9 +757,9 @@
     },
     "17": {
       "arch": "amd64",
-      "app_version": "17.7_1",
+      "app_version": "17.9",
       "source": "pkg",
-      "generated": "2026-03-02T22:15:51Z",
+      "generated": "2026-03-18T08:43:55Z",
       "packages": {
         "freebsd": [
           {
@@ -916,7 +916,7 @@
           },
           {
             "name": "libxml2",
-            "version": "2.15.1"
+            "version": "2.15.2"
           },
           {
             "name": "llvm19",
@@ -944,19 +944,19 @@
           },
           {
             "name": "postgresql17-client",
-            "version": "17.7_2"
+            "version": "17.9"
           },
           {
             "name": "postgresql17-contrib",
-            "version": "17.7_1"
+            "version": "17.9"
           },
           {
             "name": "postgresql17-server",
-            "version": "17.7_1"
+            "version": "17.9"
           },
           {
             "name": "python311",
-            "version": "3.11.14_2"
+            "version": "3.11.15"
           },
           {
             "name": "readline",
