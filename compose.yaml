@@ -7,11 +7,11 @@ x-daemonless:
   description: "The World's Most Advanced Open Source Relational Database on FreeBSD."
   upstream_url: "https://www.postgresql.org/"
   web_url: "https://www.postgresql.org/"
-  freshports_url: "https://www.freshports.org/databases/postgresql17-server/"
+  freshports_url: "https://www.freshports.org/databases/postgresql18-server/"
   user: "bsd"
   mlock: false
   upstream_binary: false
-  
+
   docs:
     env:
       POSTGRES_USER: "Database superuser name (default: postgres)"
