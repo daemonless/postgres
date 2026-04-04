@@ -1,264 +1,13 @@
 {
+  "generated": "2026-04-04T10:39:35Z",
   "image": "postgres",
-  "generated": "2026-03-20T23:32:25Z",
   "tags": {
-    "14-pkg-latest": {
-      "arch": "amd64",
-      "app_version": "14.22",
-      "source": "pkg",
-      "generated": "2026-03-20T23:30:29Z",
-      "packages": {
-        "freebsd": [
-          {
-            "name": "FreeBSD-audit-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-blocklist",
-            "version": "15.0p3"
-          },
-          {
-            "name": "FreeBSD-bzip2-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-certctl",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-clibs",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-clibs-lib32",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-ctf-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-fetch",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-kerberos-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libarchive",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libbsdstat",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libcasper",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libexecinfo",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libldns",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libmagic",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-libucl",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-mtree",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-ncurses-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-openssl",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-openssl-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-pkg-bootstrap",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-rc",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-runtime",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-tcpd",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-ufs-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-utilities",
-            "version": "15.0p1"
-          },
-          {
-            "name": "FreeBSD-xz-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-zfs-lib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-zlib",
-            "version": "15.0"
-          },
-          {
-            "name": "FreeBSD-zoneinfo",
-            "version": "15.0"
-          },
-          {
-            "name": "execline",
-            "version": "2.9.8.1"
-          },
-          {
-            "name": "gettext-runtime",
-            "version": "0.26"
-          },
-          {
-            "name": "icu",
-            "version": "76.1,1"
-          },
-          {
-            "name": "indexinfo",
-            "version": "0.3.1_1"
-          },
-          {
-            "name": "jq",
-            "version": "1.8.1"
-          },
-          {
-            "name": "libedit",
-            "version": "3.1.20251016_1,1"
-          },
-          {
-            "name": "libffi",
-            "version": "3.5.1"
-          },
-          {
-            "name": "liblz4",
-            "version": "1.10.0_2,1"
-          },
-          {
-            "name": "libxml2",
-            "version": "2.15.2"
-          },
-          {
-            "name": "llvm19",
-            "version": "19.1.7_1"
-          },
-          {
-            "name": "lua53",
-            "version": "5.3.6_1"
-          },
-          {
-            "name": "mpdecimal",
-            "version": "4.0.1"
-          },
-          {
-            "name": "oniguruma",
-            "version": "6.9.10"
-          },
-          {
-            "name": "perl5",
-            "version": "5.42.1"
-          },
-          {
-            "name": "pkg",
-            "version": "2.6.2_1"
-          },
-          {
-            "name": "postgresql14-client",
-            "version": "14.22"
-          },
-          {
-            "name": "postgresql14-contrib",
-            "version": "14.22"
-          },
-          {
-            "name": "postgresql14-server",
-            "version": "14.22"
-          },
-          {
-            "name": "python311",
-            "version": "3.11.15"
-          },
-          {
-            "name": "readline",
-            "version": "8.3.3"
-          },
-          {
-            "name": "s6",
-            "version": "2.14.0.1"
-          },
-          {
-            "name": "s6-rc",
-            "version": "0.6.0.0"
-          },
-          {
-            "name": "skalibs",
-            "version": "2.14.5.1"
-          },
-          {
-            "name": "zstd",
-            "version": "1.5.7_1"
-          }
-        ],
-        "dotnet": [],
-        "go": [],
-        "java": [],
-        "node": [],
-        "php": [],
-        "python": [
-          {
-            "name": "example",
-            "version": "21.12"
-          }
-        ],
-        "ruby": [],
-        "rust": []
-      },
-      "summary": {
-        "freebsd": 54,
-        "dotnet": 0,
-        "go": 0,
-        "java": 0,
-        "node": 0,
-        "php": 0,
-        "python": 1,
-        "ruby": 0,
-        "rust": 0,
-        "total": 55
-      }
-    },
     "14": {
-      "arch": "amd64",
       "app_version": "14.22",
-      "source": "pkg",
-      "generated": "2026-03-20T23:30:39Z",
+      "arch": "amd64",
+      "generated": "2026-04-04T10:37:08Z",
       "packages": {
+        "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
@@ -379,6 +128,10 @@
           {
             "name": "FreeBSD-zoneinfo",
             "version": "15.0"
+          },
+          {
+            "name": "ca_root_nss",
+            "version": "3.117_2"
           },
           {
             "name": "execline",
@@ -434,7 +187,7 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.0_1"
+            "version": "5.42.2"
           },
           {
             "name": "pkg",
@@ -477,7 +230,6 @@
             "version": "1.5.7_1"
           }
         ],
-        "dotnet": [],
         "go": [],
         "java": [],
         "node": [],
@@ -491,9 +243,10 @@
         "ruby": [],
         "rust": []
       },
+      "source": "pkg",
       "summary": {
-        "freebsd": 54,
         "dotnet": 0,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -501,15 +254,15 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
-    "17-pkg-latest": {
+    "14-pkg-latest": {
+      "app_version": "14.22",
       "arch": "amd64",
-      "app_version": "17.9",
-      "source": "pkg",
-      "generated": "2026-03-20T23:29:23Z",
+      "generated": "2026-04-04T10:36:03Z",
       "packages": {
+        "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
@@ -632,6 +385,10 @@
             "version": "15.0"
           },
           {
+            "name": "ca_root_nss",
+            "version": "3.117_2"
+          },
+          {
             "name": "execline",
             "version": "2.9.8.1"
           },
@@ -685,23 +442,23 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.1"
+            "version": "5.42.2"
           },
           {
             "name": "pkg",
             "version": "2.6.2_1"
           },
           {
-            "name": "postgresql17-client",
-            "version": "17.9"
+            "name": "postgresql14-client",
+            "version": "14.22"
           },
           {
-            "name": "postgresql17-contrib",
-            "version": "17.9"
+            "name": "postgresql14-contrib",
+            "version": "14.22"
           },
           {
-            "name": "postgresql17-server",
-            "version": "17.9"
+            "name": "postgresql14-server",
+            "version": "14.22"
           },
           {
             "name": "python311",
@@ -728,7 +485,6 @@
             "version": "1.5.7_1"
           }
         ],
-        "dotnet": [],
         "go": [],
         "java": [],
         "node": [],
@@ -742,9 +498,10 @@
         "ruby": [],
         "rust": []
       },
+      "source": "pkg",
       "summary": {
-        "freebsd": 54,
         "dotnet": 0,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -752,15 +509,15 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
     "17": {
-      "arch": "amd64",
       "app_version": "17.9",
-      "source": "pkg",
-      "generated": "2026-03-20T23:28:57Z",
+      "arch": "amd64",
+      "generated": "2026-04-04T10:36:33Z",
       "packages": {
+        "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
@@ -881,6 +638,10 @@
           {
             "name": "FreeBSD-zoneinfo",
             "version": "15.0"
+          },
+          {
+            "name": "ca_root_nss",
+            "version": "3.117_2"
           },
           {
             "name": "execline",
@@ -936,7 +697,7 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.0_1"
+            "version": "5.42.2"
           },
           {
             "name": "pkg",
@@ -979,7 +740,6 @@
             "version": "1.5.7_1"
           }
         ],
-        "dotnet": [],
         "go": [],
         "java": [],
         "node": [],
@@ -993,9 +753,10 @@
         "ruby": [],
         "rust": []
       },
+      "source": "pkg",
       "summary": {
-        "freebsd": 54,
         "dotnet": 0,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -1003,15 +764,15 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
-    "18-pkg-latest": {
+    "17-pkg-latest": {
+      "app_version": "17.9",
       "arch": "amd64",
-      "app_version": "18.3",
-      "source": "pkg",
-      "generated": "2026-03-20T23:29:44Z",
+      "generated": "2026-04-04T10:37:00Z",
       "packages": {
+        "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
@@ -1132,6 +893,10 @@
           {
             "name": "FreeBSD-zoneinfo",
             "version": "15.0"
+          },
+          {
+            "name": "ca_root_nss",
+            "version": "3.117_2"
           },
           {
             "name": "execline",
@@ -1187,23 +952,23 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.1"
+            "version": "5.42.2"
           },
           {
             "name": "pkg",
             "version": "2.6.2_1"
           },
           {
-            "name": "postgresql18-client",
-            "version": "18.3"
+            "name": "postgresql17-client",
+            "version": "17.9"
           },
           {
-            "name": "postgresql18-contrib",
-            "version": "18.3"
+            "name": "postgresql17-contrib",
+            "version": "17.9"
           },
           {
-            "name": "postgresql18-server",
-            "version": "18.3"
+            "name": "postgresql17-server",
+            "version": "17.9"
           },
           {
             "name": "python311",
@@ -1230,7 +995,6 @@
             "version": "1.5.7_1"
           }
         ],
-        "dotnet": [],
         "go": [],
         "java": [],
         "node": [],
@@ -1244,9 +1008,10 @@
         "ruby": [],
         "rust": []
       },
+      "source": "pkg",
       "summary": {
-        "freebsd": 54,
         "dotnet": 0,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -1254,15 +1019,15 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
     "18": {
-      "arch": "amd64",
       "app_version": "18.3",
-      "source": "pkg",
-      "generated": "2026-03-20T23:32:12Z",
+      "arch": "amd64",
+      "generated": "2026-04-04T10:38:23Z",
       "packages": {
+        "dotnet": [],
         "freebsd": [
           {
             "name": "FreeBSD-audit-lib",
@@ -1385,6 +1150,10 @@
             "version": "15.0"
           },
           {
+            "name": "ca_root_nss",
+            "version": "3.117_2"
+          },
+          {
             "name": "execline",
             "version": "2.9.7.0"
           },
@@ -1438,7 +1207,7 @@
           },
           {
             "name": "perl5",
-            "version": "5.42.0_1"
+            "version": "5.42.2"
           },
           {
             "name": "pkg",
@@ -1481,7 +1250,6 @@
             "version": "1.5.7_1"
           }
         ],
-        "dotnet": [],
         "go": [],
         "java": [],
         "node": [],
@@ -1495,9 +1263,10 @@
         "ruby": [],
         "rust": []
       },
+      "source": "pkg",
       "summary": {
-        "freebsd": 54,
         "dotnet": 0,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -1505,7 +1274,262 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
+      }
+    },
+    "18-pkg-latest": {
+      "app_version": "18.3",
+      "arch": "amd64",
+      "generated": "2026-04-04T10:36:02Z",
+      "packages": {
+        "dotnet": [],
+        "freebsd": [
+          {
+            "name": "FreeBSD-audit-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-blocklist",
+            "version": "15.0p3"
+          },
+          {
+            "name": "FreeBSD-bzip2-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-certctl",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-clibs",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-clibs-lib32",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-ctf-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-fetch",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-kerberos-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libarchive",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libbsdstat",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libcasper",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libexecinfo",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libldns",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libmagic",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-libucl",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-mtree",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-ncurses-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-openssl",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-openssl-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-pkg-bootstrap",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-rc",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-runtime",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-tcpd",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-ufs-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-utilities",
+            "version": "15.0p1"
+          },
+          {
+            "name": "FreeBSD-xz-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-zfs-lib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-zlib",
+            "version": "15.0"
+          },
+          {
+            "name": "FreeBSD-zoneinfo",
+            "version": "15.0"
+          },
+          {
+            "name": "ca_root_nss",
+            "version": "3.117_2"
+          },
+          {
+            "name": "execline",
+            "version": "2.9.8.1"
+          },
+          {
+            "name": "gettext-runtime",
+            "version": "0.26"
+          },
+          {
+            "name": "icu",
+            "version": "76.1,1"
+          },
+          {
+            "name": "indexinfo",
+            "version": "0.3.1_1"
+          },
+          {
+            "name": "jq",
+            "version": "1.8.1"
+          },
+          {
+            "name": "libedit",
+            "version": "3.1.20251016_1,1"
+          },
+          {
+            "name": "libffi",
+            "version": "3.5.1"
+          },
+          {
+            "name": "liblz4",
+            "version": "1.10.0_2,1"
+          },
+          {
+            "name": "libxml2",
+            "version": "2.15.2"
+          },
+          {
+            "name": "llvm19",
+            "version": "19.1.7_1"
+          },
+          {
+            "name": "lua53",
+            "version": "5.3.6_1"
+          },
+          {
+            "name": "mpdecimal",
+            "version": "4.0.1"
+          },
+          {
+            "name": "oniguruma",
+            "version": "6.9.10"
+          },
+          {
+            "name": "perl5",
+            "version": "5.42.2"
+          },
+          {
+            "name": "pkg",
+            "version": "2.6.2_1"
+          },
+          {
+            "name": "postgresql18-client",
+            "version": "18.3"
+          },
+          {
+            "name": "postgresql18-contrib",
+            "version": "18.3"
+          },
+          {
+            "name": "postgresql18-server",
+            "version": "18.3"
+          },
+          {
+            "name": "python311",
+            "version": "3.11.15"
+          },
+          {
+            "name": "readline",
+            "version": "8.3.3"
+          },
+          {
+            "name": "s6",
+            "version": "2.14.0.1"
+          },
+          {
+            "name": "s6-rc",
+            "version": "0.6.0.0"
+          },
+          {
+            "name": "skalibs",
+            "version": "2.14.5.1"
+          },
+          {
+            "name": "zstd",
+            "version": "1.5.7_1"
+          }
+        ],
+        "go": [],
+        "java": [],
+        "node": [],
+        "php": [],
+        "python": [
+          {
+            "name": "example",
+            "version": "21.12"
+          }
+        ],
+        "ruby": [],
+        "rust": []
+      },
+      "source": "pkg",
+      "summary": {
+        "dotnet": 0,
+        "freebsd": 55,
+        "go": 0,
+        "java": 0,
+        "node": 0,
+        "php": 0,
+        "python": 1,
+        "ruby": 0,
+        "rust": 0,
+        "total": 56
       }
     }
   }
