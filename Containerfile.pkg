@@ -6,6 +6,29 @@
 
 ARG BASE_VERSION=15
 ARG PG_VERSION=17
+
+# Builder stage — compile pgvector from FreeBSD ports
+FROM ghcr.io/daemonless/base:${BASE_VERSION} AS builder
+ARG PG_VERSION
+
+RUN pkg update && pkg install -y \
+    postgresql${PG_VERSION}-server \
+    FreeBSD-bmake FreeBSD-clibs-dev FreeBSD-clang FreeBSD-clang-dev FreeBSD-toolchain \
+    gmake pkgconf && \
+    pkg clean -ay && rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
+
+RUN fetch -qo /tmp/ports.tar.zst \
+    "https://download.freebsd.org/ports/ports/ports.tar.zst" && \
+    mkdir -p /usr/ports && \
+    tar -xf /tmp/ports.tar.zst -C /usr/ports --strip-components=1 \
+        ports/databases/pgvector ports/Mk ports/Templates ports/Keywords && \
+    rm /tmp/ports.tar.zst && \
+    cd /usr/ports/databases/pgvector && \
+    make DEFAULT_VERSIONS+=pgsql=${PG_VERSION} BATCH=yes install clean && \
+    pkg create -o /tmp postgresql${PG_VERSION}-pgvector && \
+    rm -rf /usr/ports
+
+# Production image
 FROM ghcr.io/daemonless/base:${BASE_VERSION}
 ARG PG_VERSION
 
@@ -36,6 +59,10 @@ RUN pkg update && \
     pkg install -y ${PACKAGES} && \
     pkg clean -ay && \
     rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
+
+# Install pgvector package built from ports in builder stage
+COPY --from=builder /tmp/postgresql${PG_VERSION}-pgvector-*.pkg /tmp/pgvector.pkg
+RUN pkg add /tmp/pgvector.pkg && rm /tmp/pgvector.pkg
 
 # Create directories (use Linux-compatible paths for drop-in replacement)
 RUN mkdir -p /var/lib/postgresql/data /var/run/postgresql /run/secrets /docker-entrypoint-initdb.d && \

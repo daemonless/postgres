@@ -7,9 +7,9 @@ Source: dbuild templates
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/daemonless/postgres/build.yaml?style=flat-square&label=Build&color=green)](https://github.com/daemonless/postgres/actions)
 [![Last Commit](https://img.shields.io/github/last-commit/daemonless/postgres?style=flat-square&label=Last+Commit&color=blue)](https://github.com/daemonless/postgres/commits)
+[![sysvipc Required](https://img.shields.io/badge/sysvipc-required-orange?style=flat-square&logo=freebsd&logoColor=white)](https://daemonless.io/guides/ocijail-patch/)
 
 The World's Most Advanced Open Source Relational Database on FreeBSD.
-
 
 | | |
 |---|---|
@@ -97,8 +97,6 @@ podman run -d --name postgres \
     annotation:
       org.freebsd.jail.allow.sysvipc: "true"
 ```
-
-Access at: `http://localhost:5432`
 
 ## Parameters
 

@@ -29,7 +29,6 @@ services:
     image: ghcr.io/daemonless/postgres:latest
     container_name: postgres
     restart: unless-stopped
-    
     # Needs SysV IPC
     annotations:
       org.freebsd.jail.allow.sysvipc: "true"
