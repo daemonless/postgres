@@ -1,11 +1,11 @@
 {
-  "generated": "2026-04-30T23:39:10Z",
+  "generated": "2026-05-05T22:20:55Z",
   "image": "postgres",
   "tags": {
     "14": {
       "app_version": "14.22",
       "arch": "amd64",
-      "generated": "2026-04-30T23:37:49Z",
+      "generated": "2026-05-05T22:04:17Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -202,6 +202,10 @@
             "version": "14.22"
           },
           {
+            "name": "postgresql14-pgvector",
+            "version": "0.8.2"
+          },
+          {
             "name": "postgresql14-server",
             "version": "14.22"
           },
@@ -242,7 +246,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 54,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -250,13 +254,13 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
     "14-pkg-latest": {
       "app_version": "14.22",
       "arch": "amd64",
-      "generated": "2026-04-30T23:36:47Z",
+      "generated": "2026-05-05T22:04:20Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -442,7 +446,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.4"
+            "version": "2.7.5"
           },
           {
             "name": "postgresql14-client",
@@ -451,6 +455,10 @@
           {
             "name": "postgresql14-contrib",
             "version": "14.22"
+          },
+          {
+            "name": "postgresql14-pgvector",
+            "version": "0.8.2"
           },
           {
             "name": "postgresql14-server",
@@ -493,7 +501,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 54,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -501,13 +509,13 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
     "17": {
       "app_version": "17.9",
       "arch": "amd64",
-      "generated": "2026-04-30T23:36:02Z",
+      "generated": "2026-05-05T22:04:42Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -704,6 +712,10 @@
             "version": "17.9"
           },
           {
+            "name": "postgresql17-pgvector",
+            "version": "0.8.2"
+          },
+          {
             "name": "postgresql17-server",
             "version": "17.9"
           },
@@ -744,7 +756,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 54,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -752,13 +764,13 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
     "17-pkg-latest": {
       "app_version": "17.9",
       "arch": "amd64",
-      "generated": "2026-04-30T23:36:29Z",
+      "generated": "2026-05-05T22:16:18Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -944,7 +956,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.4"
+            "version": "2.7.5"
           },
           {
             "name": "postgresql17-client",
@@ -953,6 +965,10 @@
           {
             "name": "postgresql17-contrib",
             "version": "17.9"
+          },
+          {
+            "name": "postgresql17-pgvector",
+            "version": "0.8.2"
           },
           {
             "name": "postgresql17-server",
@@ -995,7 +1011,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 54,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -1003,13 +1019,13 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
     "18": {
       "app_version": "18.3",
       "arch": "amd64",
-      "generated": "2026-04-30T23:37:58Z",
+      "generated": "2026-05-05T22:08:53Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1206,6 +1222,10 @@
             "version": "18.3"
           },
           {
+            "name": "postgresql18-pgvector",
+            "version": "0.8.2"
+          },
+          {
             "name": "postgresql18-server",
             "version": "18.3"
           },
@@ -1246,7 +1266,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 54,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -1254,13 +1274,13 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     },
     "18-pkg-latest": {
       "app_version": "18.3",
       "arch": "amd64",
-      "generated": "2026-04-30T23:36:38Z",
+      "generated": "2026-05-05T22:19:41Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1446,7 +1466,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.4"
+            "version": "2.7.5"
           },
           {
             "name": "postgresql18-client",
@@ -1455,6 +1475,10 @@
           {
             "name": "postgresql18-contrib",
             "version": "18.3"
+          },
+          {
+            "name": "postgresql18-pgvector",
+            "version": "0.8.2"
           },
           {
             "name": "postgresql18-server",
@@ -1497,7 +1521,7 @@
       "source": "pkg",
       "summary": {
         "dotnet": 0,
-        "freebsd": 54,
+        "freebsd": 55,
         "go": 0,
         "java": 0,
         "node": 0,
@@ -1505,7 +1529,7 @@
         "python": 1,
         "ruby": 0,
         "rust": 0,
-        "total": 55
+        "total": 56
       }
     }
   }
