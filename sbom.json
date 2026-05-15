@@ -1,11 +1,11 @@
 {
-  "generated": "2026-05-06T23:00:38Z",
+  "generated": "2026-05-15T23:17:35Z",
   "image": "postgres",
   "tags": {
     "14": {
       "app_version": "14.22",
       "arch": "amd64",
-      "generated": "2026-05-06T22:57:24Z",
+      "generated": "2026-05-15T23:15:52Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -260,7 +260,7 @@
     "14-pkg-latest": {
       "app_version": "14.22",
       "arch": "amd64",
-      "generated": "2026-05-06T22:56:47Z",
+      "generated": "2026-05-15T23:15:55Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -394,7 +394,7 @@
           },
           {
             "name": "gettext-runtime",
-            "version": "1.0"
+            "version": "1.0_1"
           },
           {
             "name": "icu",
@@ -515,7 +515,7 @@
     "17": {
       "app_version": "17.9",
       "arch": "amd64",
-      "generated": "2026-05-06T22:56:48Z",
+      "generated": "2026-05-15T23:16:23Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -770,7 +770,7 @@
     "17-pkg-latest": {
       "app_version": "17.9",
       "arch": "amd64",
-      "generated": "2026-05-06T22:57:31Z",
+      "generated": "2026-05-15T23:14:48Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -904,7 +904,7 @@
           },
           {
             "name": "gettext-runtime",
-            "version": "1.0"
+            "version": "1.0_1"
           },
           {
             "name": "icu",
@@ -1025,7 +1025,7 @@
     "18": {
       "app_version": "18.3",
       "arch": "amd64",
-      "generated": "2026-05-06T22:58:51Z",
+      "generated": "2026-05-15T23:11:14Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1280,7 +1280,7 @@
     "18-pkg-latest": {
       "app_version": "18.3",
       "arch": "amd64",
-      "generated": "2026-05-06T22:58:31Z",
+      "generated": "2026-05-15T23:14:11Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1414,7 +1414,7 @@
           },
           {
             "name": "gettext-runtime",
-            "version": "1.0"
+            "version": "1.0_1"
           },
           {
             "name": "icu",
