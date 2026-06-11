@@ -40,19 +40,19 @@ Before deploying, ensure your host environment is ready. See the [Quick Start Gu
 ```yaml
 services:
   postgres:
-    image: ghcr.io/daemonless/postgres:latest
+    image: "ghcr.io/daemonless/postgres:latest"
     container_name: postgres
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres  # Database superuser name (default: postgres)
+      - POSTGRES_PASSWORD=postgres  # Database superuser password
+      - POSTGRES_DB=postgres  # Default database to create (default: same as user)
       - PUID=1000
       - PGID=1000
       - TZ=UTC
     volumes:
       - "/path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data"
     ports:
-      - 5432:5432
+      - "5432:5432"
     annotations:
       org.freebsd.jail.allow.sysvipc: "true"
     restart: unless-stopped
@@ -80,7 +80,7 @@ podman run -d --name postgres \
 - name: Deploy postgres
   containers.podman.podman_container:
     name: postgres
-    image: ghcr.io/daemonless/postgres:latest
+    image: "ghcr.io/daemonless/postgres:latest"
     state: started
     restart_policy: always
     env:

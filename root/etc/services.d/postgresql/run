@@ -4,6 +4,10 @@
 # Use Linux-compatible path for drop-in replacement
 PGDATA="/var/lib/postgresql/data"
 
+# Honor POSTGRES_PORT for the server (written to postgresql.conf below) and
+# for every libpq client used during init (psql, createdb) via PGPORT.
+export PGPORT="${POSTGRES_PORT:-5432}"
+
 # Initialize database if needed
 if [ ! -f "$PGDATA/PG_VERSION" ]; then
     echo "Initializing PostgreSQL database..."
@@ -23,6 +27,9 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
 
     # Listen on all interfaces
     /usr/local/bin/s6-setuidgid bsd sh -c "echo \"listen_addresses = '*'\" >> '$PGDATA/postgresql.conf'"
+
+    # Persist the port so multiple host-networked instances can coexist
+    /usr/local/bin/s6-setuidgid bsd sh -c "echo \"port = $PGPORT\" >> '$PGDATA/postgresql.conf'"
 
     # Add shared_preload_libraries if specified (required for extensions like vchord)
     if [ -n "$POSTGRES_SHARED_PRELOAD_LIBRARIES" ]; then
