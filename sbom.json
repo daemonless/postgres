@@ -1,11 +1,11 @@
 {
-  "generated": "2026-06-07T22:08:47Z",
+  "generated": "2026-06-12T07:55:53Z",
   "image": "postgres",
   "tags": {
     "14": {
       "app_version": "14.23",
       "arch": "amd64",
-      "generated": "2026-06-07T22:06:18Z",
+      "generated": "2026-06-12T07:53:35Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -260,7 +260,7 @@
     "14-pkg-latest": {
       "app_version": "14.23",
       "arch": "amd64",
-      "generated": "2026-06-07T22:07:36Z",
+      "generated": "2026-06-12T07:54:00Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -515,7 +515,7 @@
     "17": {
       "app_version": "17.10",
       "arch": "amd64",
-      "generated": "2026-06-07T22:06:19Z",
+      "generated": "2026-06-12T07:54:43Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -770,7 +770,7 @@
     "17-pkg-latest": {
       "app_version": "17.10",
       "arch": "amd64",
-      "generated": "2026-06-07T22:06:06Z",
+      "generated": "2026-06-12T07:52:56Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1025,7 +1025,7 @@
     "18": {
       "app_version": "18.4",
       "arch": "amd64",
-      "generated": "2026-06-07T22:05:54Z",
+      "generated": "2026-06-12T07:52:51Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1280,7 +1280,7 @@
     "18-pkg-latest": {
       "app_version": "18.4",
       "arch": "amd64",
-      "generated": "2026-06-07T22:05:43Z",
+      "generated": "2026-06-12T07:53:57Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
