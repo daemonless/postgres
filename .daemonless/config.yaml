@@ -19,6 +19,32 @@ build:
       args:
         PG_VERSION: "14"
         BASE_VERSION: "15-latest"
+    - tag: "15"
+      pkg_name: postgresql15-server
+      containerfile: Containerfile.pkg
+      args:
+        PG_VERSION: "15"
+        BASE_VERSION: "15-quarterly"
+      aliases: ["15-pkg"]
+    - tag: "15-pkg-latest"
+      pkg_name: postgresql15-server
+      containerfile: Containerfile.pkg
+      args:
+        PG_VERSION: "15"
+        BASE_VERSION: "15-latest"
+    - tag: "16"
+      pkg_name: postgresql16-server
+      containerfile: Containerfile.pkg
+      args:
+        PG_VERSION: "16"
+        BASE_VERSION: "15-quarterly"
+      aliases: ["16-pkg"]
+    - tag: "16-pkg-latest"
+      pkg_name: postgresql16-server
+      containerfile: Containerfile.pkg
+      args:
+        PG_VERSION: "16"
+        BASE_VERSION: "15-latest"
     - tag: "17"
       pkg_name: postgresql17-server
       containerfile: Containerfile.pkg
