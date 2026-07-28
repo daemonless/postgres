@@ -1,11 +1,11 @@
 {
-  "generated": "2026-07-18T21:23:46Z",
+  "generated": "2026-07-28T16:24:25Z",
   "image": "postgres",
   "tags": {
     "14": {
       "app_version": "14.23",
       "arch": "amd64",
-      "generated": "2026-07-18T21:18:24Z",
+      "generated": "2026-07-28T16:23:15Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -276,7 +276,7 @@
     "14-pkg-latest": {
       "app_version": "14.23",
       "arch": "amd64",
-      "generated": "2026-07-18T21:16:31Z",
+      "generated": "2026-07-28T16:22:11Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -438,7 +438,7 @@
           },
           {
             "name": "libffi",
-            "version": "3.6.0"
+            "version": "3.7.1"
           },
           {
             "name": "liblz4",
@@ -470,7 +470,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.5"
+            "version": "2.8.1_1"
           },
           {
             "name": "postgresql14-client",
@@ -539,7 +539,7 @@
     "15": {
       "app_version": "15.18",
       "arch": "amd64",
-      "generated": "2026-07-18T21:17:20Z",
+      "generated": "2026-07-28T16:19:42Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -810,7 +810,7 @@
     "15-pkg-latest": {
       "app_version": "15.18",
       "arch": "amd64",
-      "generated": "2026-07-18T21:16:43Z",
+      "generated": "2026-07-28T16:20:13Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -972,7 +972,7 @@
           },
           {
             "name": "libffi",
-            "version": "3.6.0"
+            "version": "3.7.1"
           },
           {
             "name": "liblz4",
@@ -1004,7 +1004,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.5"
+            "version": "2.8.1_1"
           },
           {
             "name": "postgresql15-client",
@@ -1073,7 +1073,7 @@
     "16": {
       "app_version": "16.14",
       "arch": "amd64",
-      "generated": "2026-07-18T21:22:34Z",
+      "generated": "2026-07-28T16:19:42Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1344,7 +1344,7 @@
     "16-pkg-latest": {
       "app_version": "16.14",
       "arch": "amd64",
-      "generated": "2026-07-18T21:16:54Z",
+      "generated": "2026-07-28T16:21:52Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1506,7 +1506,7 @@
           },
           {
             "name": "libffi",
-            "version": "3.6.0"
+            "version": "3.7.1"
           },
           {
             "name": "liblz4",
@@ -1538,7 +1538,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.5"
+            "version": "2.8.1_1"
           },
           {
             "name": "postgresql16-client",
@@ -1607,7 +1607,7 @@
     "17": {
       "app_version": "17.10",
       "arch": "amd64",
-      "generated": "2026-07-18T21:18:42Z",
+      "generated": "2026-07-28T16:20:57Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1878,7 +1878,7 @@
     "17-pkg-latest": {
       "app_version": "17.10",
       "arch": "amd64",
-      "generated": "2026-07-18T21:16:13Z",
+      "generated": "2026-07-28T16:20:18Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2040,7 +2040,7 @@
           },
           {
             "name": "libffi",
-            "version": "3.6.0"
+            "version": "3.7.1"
           },
           {
             "name": "liblz4",
@@ -2072,7 +2072,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.5"
+            "version": "2.8.1_1"
           },
           {
             "name": "postgresql17-client",
@@ -2141,7 +2141,7 @@
     "18": {
       "app_version": "18.4",
       "arch": "amd64",
-      "generated": "2026-07-18T21:19:14Z",
+      "generated": "2026-07-28T16:21:14Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2412,7 +2412,7 @@
     "18-pkg-latest": {
       "app_version": "18.4",
       "arch": "amd64",
-      "generated": "2026-07-18T21:17:12Z",
+      "generated": "2026-07-28T16:19:58Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2574,7 +2574,7 @@
           },
           {
             "name": "libffi",
-            "version": "3.6.0"
+            "version": "3.7.1"
           },
           {
             "name": "liblz4",
@@ -2606,7 +2606,7 @@
           },
           {
             "name": "pkg",
-            "version": "2.7.5"
+            "version": "2.8.1_1"
           },
           {
             "name": "postgresql18-client",
