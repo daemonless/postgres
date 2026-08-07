@@ -11,6 +11,9 @@ Source: dbuild templates
 
 The World's Most Advanced Open Source Relational Database on FreeBSD.
 
+> [!WARNING]
+> **Requires ocijail ≥ 0.6.0 (annotation support).** This image needs the jail permission **allow.sysvipc**, applied via OCI annotations. FreeBSD **quarterly ships ocijail 0.4.0, which has no annotation support** — the container starts but the permission is silently dropped, so the app can crash or misbehave at runtime. Point your pkg repos at the `latest` branch (ocijail ≥ 0.6.0), then run with the annotation flag below. See the [ocijail guide](https://daemonless.io/guides/ocijail-patch/).
+
 | | |
 |---|---|
 | **Port** | 5432 |
@@ -19,7 +22,6 @@ The World's Most Advanced Open Source Relational Database on FreeBSD.
 | **Website** | [https://www.postgresql.org/](https://www.postgresql.org/) |
 
 ## Version Tags
-
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
 | `14` / `14-pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
@@ -34,7 +36,6 @@ The World's Most Advanced Open Source Relational Database on FreeBSD.
 | `18-pkg-latest` / `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Newest FreeBSD packages. |
 
 ## Prerequisites
-
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
 
 ## Deployment
@@ -53,14 +54,78 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=UTC
+      - POSTGRES_INITDB_ARGS=  # Additional arguments for initdb
+      - POSTGRES_HOST_AUTH_METHOD=  # Authentication method (default: scram-sha-256)
     volumes:
-      - "/path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data"
+      - "/path/to/containers/postgres:/var/lib/postgresql/data"
     ports:
       - "5432:5432"
     annotations:
       org.freebsd.jail.allow.sysvipc: "true"
     restart: unless-stopped
 ```
+
+### AppJail Director
+**.env**:
+
+```
+# .env
+
+DIRECTOR_PROJECT=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_DB=postgres
+PUID=1000
+PGID=1000
+TZ=UTC
+POSTGRES_INITDB_ARGS=
+POSTGRES_HOST_AUTH_METHOD=
+```
+
+**appjail-director.yml**:
+
+```yaml
+# appjail-director.yml
+
+options:
+  - virtualnet: ':<random> default'
+  - nat:
+services:
+  postgres:
+    name: postgres
+    options:
+      - container: 'boot args:--pull'
+      - expose: '5432:5432 proto:tcp' \
+    oci:
+      user: root
+      environment:
+        - POSTGRES_USER: !ENV '${POSTGRES_USER}'
+        - POSTGRES_PASSWORD: !ENV '${POSTGRES_PASSWORD}'
+        - POSTGRES_DB: !ENV '${POSTGRES_DB}'
+        - PUID: !ENV '${PUID}'
+        - PGID: !ENV '${PGID}'
+        - TZ: !ENV '${TZ}'
+        - POSTGRES_INITDB_ARGS: !ENV '${POSTGRES_INITDB_ARGS}'
+        - POSTGRES_HOST_AUTH_METHOD: !ENV '${POSTGRES_HOST_AUTH_METHOD}'
+    volumes:
+      - postgres: /var/lib/postgresql/data
+volumes:
+  postgres:
+    device: '/path/to/containers/postgres'
+```
+
+**Makejail**:
+
+```
+# Makejail
+
+ARG tag=latest
+
+OPTION overwrite=force
+OPTION from=ghcr.io/daemonless/postgres:${tag}
+SET allow.sysvipc=1
+```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Podman CLI
 
@@ -74,9 +139,33 @@ podman run -d --name postgres \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=UTC \
-  -v /path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data \
+  -e POSTGRES_INITDB_ARGS= \
+  -e POSTGRES_HOST_AUTH_METHOD= \
+  -v /path/to/containers/postgres:/var/lib/postgresql/data \
   ghcr.io/daemonless/postgres:latest
 ```
+
+### AppJail
+
+```bash
+appjail oci run -Pd \
+  -o overwrite=force \
+  -o container="args:--pull" \
+  -o virtualnet=":<random> default" \
+  -o nat \
+  -o expose="5432:5432 proto:tcp" \
+  -e POSTGRES_USER=postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=postgres \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=UTC \
+  -e POSTGRES_INITDB_ARGS= \
+  -e POSTGRES_HOST_AUTH_METHOD= \
+  -o fstab="/path/to/containers/postgres /var/lib/postgresql/data <pseudofs>" \
+  ghcr.io/daemonless/postgres:latest postgres
+```
+**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
 
 ### Ansible
 
@@ -94,10 +183,12 @@ podman run -d --name postgres \
       PUID: "1000"
       PGID: "1000"
       TZ: "UTC"
+      POSTGRES_INITDB_ARGS: ""
+      POSTGRES_HOST_AUTH_METHOD: ""
     ports:
       - "5432:5432"
     volumes:
-      - "/path/to/containers/postgres/var/lib/postgresql/data:/var/lib/postgresql/data"
+      - "/path/to/containers/postgres:/var/lib/postgresql/data"
     annotation:
       org.freebsd.jail.allow.sysvipc: "true"
 ```
@@ -114,6 +205,8 @@ podman run -d --name postgres \
 | `PUID` | `1000` |  |
 | `PGID` | `1000` |  |
 | `TZ` | `UTC` |  |
+| `POSTGRES_INITDB_ARGS` | `` | Additional arguments for initdb |
+| `POSTGRES_HOST_AUTH_METHOD` | `` | Authentication method (default: scram-sha-256) |
 
 ### Volumes
 
@@ -129,7 +222,7 @@ podman run -d --name postgres \
 
 **Architectures:** amd64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
-**Base:** FreeBSD 15.0
+**Base:** FreeBSD 15.1
 
 ---
 
