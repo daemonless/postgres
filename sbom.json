@@ -1,11 +1,11 @@
 {
-  "generated": "2026-08-23T07:44:06Z",
+  "generated": "2026-08-24T14:08:32Z",
   "image": "postgres",
   "tags": {
     "14-amd64": {
-      "app_version": "14.23",
+      "app_version": "14.24",
       "arch": "amd64",
-      "generated": "2026-08-23T07:40:12Z",
+      "generated": "2026-08-24T14:03:42Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -372,14 +372,14 @@
               "PostgreSQL"
             ],
             "name": "postgresql14-client",
-            "version": "14.23"
+            "version": "14.24"
           },
           {
             "licenses": [
               "PostgreSQL"
             ],
             "name": "postgresql14-contrib",
-            "version": "14.23"
+            "version": "14.24"
           },
           {
             "licenses": [
@@ -393,7 +393,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql14-server",
-            "version": "14.23"
+            "version": "14.24"
           },
           {
             "licenses": [
@@ -463,7 +463,7 @@
     "14-pkg-latest-amd64": {
       "app_version": "14.24",
       "arch": "amd64",
-      "generated": "2026-08-23T07:40:05Z",
+      "generated": "2026-08-24T14:02:27Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -717,7 +717,7 @@
               "MIT"
             ],
             "name": "expat",
-            "version": "2.8.2"
+            "version": "2.8.3"
           },
           {
             "licenses": [
@@ -919,9 +919,9 @@
       }
     },
     "15-amd64": {
-      "app_version": "15.18",
+      "app_version": "15.19",
       "arch": "amd64",
-      "generated": "2026-08-23T07:42:12Z",
+      "generated": "2026-08-24T14:06:48Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1288,14 +1288,14 @@
               "PostgreSQL"
             ],
             "name": "postgresql15-client",
-            "version": "15.18"
+            "version": "15.19"
           },
           {
             "licenses": [
               "PostgreSQL"
             ],
             "name": "postgresql15-contrib",
-            "version": "15.18"
+            "version": "15.19"
           },
           {
             "licenses": [
@@ -1309,7 +1309,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql15-server",
-            "version": "15.18"
+            "version": "15.19"
           },
           {
             "licenses": [
@@ -1379,7 +1379,7 @@
     "15-pkg-latest-amd64": {
       "app_version": "15.19",
       "arch": "amd64",
-      "generated": "2026-08-23T07:42:35Z",
+      "generated": "2026-08-24T14:03:37Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1633,7 +1633,7 @@
               "MIT"
             ],
             "name": "expat",
-            "version": "2.8.2"
+            "version": "2.8.3"
           },
           {
             "licenses": [
@@ -1835,9 +1835,9 @@
       }
     },
     "16-amd64": {
-      "app_version": "16.14",
+      "app_version": "16.15",
       "arch": "amd64",
-      "generated": "2026-08-23T07:39:44Z",
+      "generated": "2026-08-24T14:03:57Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2204,14 +2204,14 @@
               "PostgreSQL"
             ],
             "name": "postgresql16-client",
-            "version": "16.14"
+            "version": "16.15"
           },
           {
             "licenses": [
               "PostgreSQL"
             ],
             "name": "postgresql16-contrib",
-            "version": "16.14"
+            "version": "16.15"
           },
           {
             "licenses": [
@@ -2225,7 +2225,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql16-server",
-            "version": "16.14"
+            "version": "16.15"
           },
           {
             "licenses": [
@@ -2295,7 +2295,7 @@
     "16-pkg-latest-amd64": {
       "app_version": "16.15",
       "arch": "amd64",
-      "generated": "2026-08-23T07:40:23Z",
+      "generated": "2026-08-24T14:00:06Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -2549,7 +2549,7 @@
               "MIT"
             ],
             "name": "expat",
-            "version": "2.8.2"
+            "version": "2.8.3"
           },
           {
             "licenses": [
@@ -2751,9 +2751,9 @@
       }
     },
     "17-amd64": {
-      "app_version": "17.10",
+      "app_version": "17.11",
       "arch": "amd64",
-      "generated": "2026-08-23T07:39:47Z",
+      "generated": "2026-08-24T14:01:53Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -3120,14 +3120,14 @@
               "PostgreSQL"
             ],
             "name": "postgresql17-client",
-            "version": "17.10"
+            "version": "17.11"
           },
           {
             "licenses": [
               "PostgreSQL"
             ],
             "name": "postgresql17-contrib",
-            "version": "17.10"
+            "version": "17.11"
           },
           {
             "licenses": [
@@ -3141,7 +3141,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql17-server",
-            "version": "17.10"
+            "version": "17.11"
           },
           {
             "licenses": [
@@ -3211,7 +3211,7 @@
     "17-pkg-latest-amd64": {
       "app_version": "17.11",
       "arch": "amd64",
-      "generated": "2026-08-23T07:38:57Z",
+      "generated": "2026-08-24T14:00:15Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -3465,7 +3465,7 @@
               "MIT"
             ],
             "name": "expat",
-            "version": "2.8.2"
+            "version": "2.8.3"
           },
           {
             "licenses": [
@@ -3667,9 +3667,9 @@
       }
     },
     "18-amd64": {
-      "app_version": "18.4",
+      "app_version": "18.6",
       "arch": "amd64",
-      "generated": "2026-08-23T07:39:38Z",
+      "generated": "2026-08-24T14:01:06Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -4036,14 +4036,14 @@
               "PostgreSQL"
             ],
             "name": "postgresql18-client",
-            "version": "18.4"
+            "version": "18.6"
           },
           {
             "licenses": [
               "PostgreSQL"
             ],
             "name": "postgresql18-contrib",
-            "version": "18.4"
+            "version": "18.6"
           },
           {
             "licenses": [
@@ -4057,7 +4057,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql18-server",
-            "version": "18.4"
+            "version": "18.6"
           },
           {
             "licenses": [
@@ -4127,7 +4127,7 @@
     "18-pkg-latest-amd64": {
       "app_version": "18.6",
       "arch": "amd64",
-      "generated": "2026-08-23T07:42:56Z",
+      "generated": "2026-08-24T14:03:09Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -4381,7 +4381,7 @@
               "MIT"
             ],
             "name": "expat",
-            "version": "2.8.2"
+            "version": "2.8.3"
           },
           {
             "licenses": [
