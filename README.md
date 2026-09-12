@@ -94,8 +94,9 @@ services:
   postgres:
     name: postgres
     options:
-      - container: 'boot args:--pull'
+      - container: 'args:--pull'
       - expose: '5432:5432 proto:tcp'
+      - template: !ENV '${PWD}/template.conf'
     oci:
       user: root
       environment:
@@ -121,14 +122,30 @@ volumes:
 
 ARG tag=latest
 
+OPTION container=boot
 OPTION overwrite=force
 OPTION from=ghcr.io/daemonless/postgres:${tag}
-SET allow.sysvipc=1
+```
+
+**template.conf**:
+
+```
+# template.conf
+
+exec.start: "/bin/sh /etc/rc"
+exec.stop: "/bin/sh /etc/rc.shutdown jail"
+mount.devfs
+persist
+allow.sysvipc
 ```
 
 Save the files above, then run `appjail-director up`.
 
-**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+
+> [!WARNING]
+> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
+>
+> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
 
 ### Podman CLI
 
@@ -152,12 +169,14 @@ Save as `run.sh`, then run `sh run.sh`.
 
 ### AppJail
 
+
 ```bash
 appjail oci run -Pd \
   -o overwrite=force \
   -o container="args:--pull" \
   -o virtualnet=":<random> default" \
   -o nat \
+  -o template=template.conf \
   -o expose="5432:5432 proto:tcp" \
   -e POSTGRES_USER=postgres \
   -e POSTGRES_PASSWORD=postgres \
@@ -171,21 +190,37 @@ appjail oci run -Pd \
   ghcr.io/daemonless/postgres:latest postgres
 ```
 
-Save as `run.sh`, then run `sh run.sh`.
+**template.conf**:
+```
+# template.conf
 
-**Note**: Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the IPv4 address assigned by the virtual network.
+exec.start: "/bin/sh /etc/rc"
+exec.stop: "/bin/sh /etc/rc.shutdown jail"
+mount.devfs
+persist
+allow.sysvipc
+```
+
+Save the files above, then run `sh run.sh`.
+
+
+> [!WARNING]
+> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
+>
+> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
 
 ### Bastille
 
 > [!WARNING]
-> Bastille's OCI support is **experimental**. It requires `buildah`, shares the host network stack (`inherit`), and persists image-declared volumes under `--data-path`.
+> Bastille's OCI support is **experimental**. It requires `buildah` and shares the host network stack (`inherit`). Mount volumes with `--volume HOST JAIL`; without it, image-declared volumes are stored under `${bastille_volumesdir}/${jail}`.
 
 ```yaml
 services:
   postgres:
+    name: postgres
     image: "ghcr.io/daemonless/postgres:latest"
-    container_name: postgres
-    network_mode: host  # jail shares host networking
+    network:
+      - mode: host
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -195,9 +230,11 @@ services:
       - TZ=UTC
       - POSTGRES_INITDB_ARGS=
       - POSTGRES_HOST_AUTH_METHOD=
+    volumes:
+      - "/path/to/containers/postgres:/var/lib/postgresql/data"
 ```
 
-Save as `podman-compose.yml`, then run `bastille up`. Or via CLI:
+Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
 
 ```bash
 bastille create -O \
@@ -209,7 +246,7 @@ bastille create -O \
   --env TZ=UTC \
   --env POSTGRES_INITDB_ARGS= \
   --env POSTGRES_HOST_AUTH_METHOD= \
-  --data-path /path/to/containers/postgres \
+  --volume /path/to/containers/postgres /var/lib/postgresql/data \
   postgres ghcr.io/daemonless/postgres:latest inherit
 ```
 
