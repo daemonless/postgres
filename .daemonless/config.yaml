@@ -9,70 +9,48 @@ build:
     - amd64
     - aarch64
   variants:
-    - tag: "14"
-      pkg_name: postgresql14-server
-      containerfile: Containerfile.pkg
-      args:
-        PG_VERSION: "14"
-        BASE_VERSION: "15-quarterly"
-      aliases: ["14-pkg"]
     - tag: "14-pkg-latest"
       pkg_name: postgresql14-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "14"
         BASE_VERSION: "15-latest"
-    - tag: "15"
-      pkg_name: postgresql15-server
-      containerfile: Containerfile.pkg
-      args:
-        PG_VERSION: "15"
-        BASE_VERSION: "15-quarterly"
-      aliases: ["15-pkg"]
+      aliases: ["14"]
     - tag: "15-pkg-latest"
       pkg_name: postgresql15-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "15"
         BASE_VERSION: "15-latest"
-    - tag: "16"
-      pkg_name: postgresql16-server
-      containerfile: Containerfile.pkg
-      args:
-        PG_VERSION: "16"
-        BASE_VERSION: "15-quarterly"
-      aliases: ["16-pkg"]
+      aliases: ["15"]
     - tag: "16-pkg-latest"
       pkg_name: postgresql16-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "16"
         BASE_VERSION: "15-latest"
-    - tag: "17"
-      pkg_name: postgresql17-server
-      containerfile: Containerfile.pkg
-      args:
-        PG_VERSION: "17"
-        BASE_VERSION: "15-quarterly"
-      aliases: ["17-pkg"]
+      aliases: ["16"]
     - tag: "17-pkg-latest"
       pkg_name: postgresql17-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "17"
         BASE_VERSION: "15-latest"
-    - tag: "18"
-      pkg_name: postgresql18-server
-      containerfile: Containerfile.pkg
-      args:
-        PG_VERSION: "18"
-        BASE_VERSION: "15-quarterly"
-      aliases: ["18-pkg", "pkg", "latest"]
-      default: true
+      aliases: ["17"]
     - tag: "18-pkg-latest"
       pkg_name: postgresql18-server
       containerfile: Containerfile.pkg
       args:
         PG_VERSION: "18"
         BASE_VERSION: "15-latest"
-      aliases: ["pkg-latest"]
+      aliases: ["18", "latest", "pkg", "pkg-latest"]
+      default: true
+    # 19 is still a beta (19.b3); deliberately not aliased to
+    # latest/pkg -- 18 holds those until 19.0 ships.
+    - tag: "19-pkg-latest"
+      pkg_name: postgresql19-server
+      containerfile: Containerfile.pkg
+      args:
+        PG_VERSION: "19"
+        BASE_VERSION: "15-latest"
+      aliases: ["19"]

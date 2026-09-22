@@ -22,16 +22,12 @@ The World's Most Advanced Open Source Relational Database on FreeBSD.
 ## Version Tags
 | Tag | Description | Best For |
 | :--- | :--- | :--- |
-| `14` / `14-pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
-| `14-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
-| `15` / `15-pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
-| `15-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
-| `16` / `16-pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
-| `16-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
-| `17` / `17-pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Production stability. |
-| `17-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
-| `18` / `18-pkg` / `latest` / `pkg` | **FreeBSD Quarterly**. Uses stable, tested packages. | Most users — recommended. |
-| `18-pkg-latest` / `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
+| `14` / `14-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
+| `15` / `15-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
+| `16` / `16-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
+| `17` / `17-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
+| `18` / `18-pkg-latest` / `latest` / `pkg` / `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
+| `19` / `19-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
 
 ## Prerequisites
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
