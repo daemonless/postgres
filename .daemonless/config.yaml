@@ -45,12 +45,8 @@ build:
         BASE_VERSION: "15-latest"
       aliases: ["18", "latest", "pkg", "pkg-latest"]
       default: true
-    # 19 is still a beta (19.b3); deliberately not aliased to
-    # latest/pkg -- 18 holds those until 19.0 ships.
-    - tag: "19-pkg-latest"
-      pkg_name: postgresql19-server
-      containerfile: Containerfile.pkg
-      args:
-        PG_VERSION: "19"
-        BASE_VERSION: "15-latest"
-      aliases: ["19"]
+    # 19 is intentionally absent: postgresql19-server (19.b3) installs fine,
+    # but the pgvector 0.8.2 port fails to compile against it -- PG19 moved the
+    # core internals it relies on (LWLock, slock_t, ConditionVariable, Page,
+    # AddinShmemInitLock) out of postgres.h's transitive includes. Re-add once
+    # pgvector supports PG19 and 19.0 ships.

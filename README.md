@@ -27,7 +27,6 @@ The World's Most Advanced Open Source Relational Database on FreeBSD.
 | `16` / `16-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
 | `17` / `17-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
 | `18` / `18-pkg-latest` / `latest` / `pkg` / `pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
-| `19` / `19-pkg-latest` | **FreeBSD Latest**. Rolling package updates. | Staying current. |
 
 ## Prerequisites
 Before deploying, ensure your host environment is ready. See the [Quick Start Guide](https://daemonless.io/guides/quick-start) for host setup instructions.
