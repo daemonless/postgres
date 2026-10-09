@@ -50,7 +50,7 @@ services:
       - POSTGRES_INITDB_ARGS=  # Additional arguments for initdb
       - POSTGRES_HOST_AUTH_METHOD=  # Authentication method (default: scram-sha-256)
     volumes:
-      - "/path/to/containers/postgres:/var/lib/postgresql/data"
+      - "/containers/postgres:/var/lib/postgresql/data"
     ports:
       - "5432:5432"
     annotations:
@@ -108,7 +108,7 @@ services:
       - postgres: /var/lib/postgresql/data
 volumes:
   postgres:
-    device: '/path/to/containers/postgres'
+    device: '/containers/postgres'
 ```
 
 **Makejail**:
@@ -143,68 +143,6 @@ Save the files above, then run `appjail-director up`.
 >
 > To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
 
-### Podman CLI
-
-```bash
-podman run -d --name postgres \
-  -p 5432:5432 \
-  --annotation 'org.freebsd.jail.allow.sysvipc=true' \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=postgres \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=UTC \
-  -e POSTGRES_INITDB_ARGS= \
-  -e POSTGRES_HOST_AUTH_METHOD= \
-  -v /path/to/containers/postgres:/var/lib/postgresql/data \
-  ghcr.io/daemonless/postgres:latest
-```
-
-Save as `run.sh`, then run `sh run.sh`.
-
-### AppJail
-
-
-```bash
-appjail oci run -Pd \
-  -o overwrite=force \
-  -o container="args:--pull" \
-  -o virtualnet=":<random> default" \
-  -o nat \
-  -o template=template.conf \
-  -o expose="5432:5432 proto:tcp" \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=postgres \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=UTC \
-  -e POSTGRES_INITDB_ARGS= \
-  -e POSTGRES_HOST_AUTH_METHOD= \
-  -o fstab="/path/to/containers/postgres /var/lib/postgresql/data <pseudofs>" \
-  ghcr.io/daemonless/postgres:latest postgres
-```
-
-**template.conf**:
-```
-# template.conf
-
-exec.start: "/bin/sh /etc/rc"
-exec.stop: "/bin/sh /etc/rc.shutdown jail"
-mount.devfs
-persist
-allow.sysvipc
-```
-
-Save the files above, then run `sh run.sh`.
-
-
-> [!WARNING]
-> Exposing ports in AppJail means that your service can be reached from remote hosts. If that is not your intention, do not expose the ports and communicate with the service using the jail's IPv4 address or hostname assigned by the virtual network.
->
-> To avoid exposing ports, just remove the `expose` option in your `appjail-director.yml` or from your command-line arguments.
-
 ### Bastille
 
 > [!WARNING]
@@ -227,52 +165,10 @@ services:
       - POSTGRES_INITDB_ARGS=
       - POSTGRES_HOST_AUTH_METHOD=
     volumes:
-      - "/path/to/containers/postgres:/var/lib/postgresql/data"
+      - "/containers/postgres:/var/lib/postgresql/data"
 ```
 
-Save as `bastille-compose.yml`, then run `bastille up`. Or via CLI:
-
-```bash
-bastille create -O \
-  --env POSTGRES_USER=postgres \
-  --env POSTGRES_PASSWORD=postgres \
-  --env POSTGRES_DB=postgres \
-  --env PUID=1000 \
-  --env PGID=1000 \
-  --env TZ=UTC \
-  --env POSTGRES_INITDB_ARGS= \
-  --env POSTGRES_HOST_AUTH_METHOD= \
-  --volume /path/to/containers/postgres /var/lib/postgresql/data \
-  postgres ghcr.io/daemonless/postgres:latest inherit
-```
-
-### Ansible
-
-```yaml
-- name: Deploy postgres
-  containers.podman.podman_container:
-    name: postgres
-    image: "ghcr.io/daemonless/postgres:latest"
-    state: started
-    restart_policy: always
-    env:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB: "postgres"
-      PUID: "1000"
-      PGID: "1000"
-      TZ: "UTC"
-      POSTGRES_INITDB_ARGS: ""
-      POSTGRES_HOST_AUTH_METHOD: ""
-    ports:
-      - "5432:5432"
-    volumes:
-      - "/path/to/containers/postgres:/var/lib/postgresql/data"
-    annotation:
-      org.freebsd.jail.allow.sysvipc: "true"
-```
-
-Save as `postgres-deploy.yaml`, then run `ansible-playbook postgres-deploy.yaml`.
+Save as `bastille-compose.yml`, then run `bastille up`.
 
 ## Parameters
 
