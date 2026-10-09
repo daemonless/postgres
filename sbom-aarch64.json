@@ -1,11 +1,11 @@
 {
-  "generated": "2026-09-28T19:24:08Z",
+  "generated": "2026-10-09T16:23:26Z",
   "image": "postgres",
   "tags": {
     "14-pkg-latest-aarch64": {
       "app_version": "14.24",
       "arch": "aarch64",
-      "generated": "2026-09-28T19:18:02Z",
+      "generated": "2026-10-09T16:17:29Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -42,7 +42,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-clibs",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -56,7 +56,7 @@
               "BSD-3-Clause"
             ],
             "name": "FreeBSD-dhclient",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -91,7 +91,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-libcasper",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -154,7 +154,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -189,7 +189,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -210,7 +210,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-utilities",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -238,7 +238,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -252,7 +252,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.129"
+            "version": "3.130"
           },
           {
             "licenses": [
@@ -393,7 +393,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql14-pgvector",
-            "version": "0.8.2"
+            "version": "0.8.7"
           },
           {
             "licenses": [
@@ -407,7 +407,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.14"
+            "version": "3.12.14_1"
           },
           {
             "licenses": [
@@ -470,7 +470,7 @@
     "15-pkg-latest-aarch64": {
       "app_version": "15.19",
       "arch": "aarch64",
-      "generated": "2026-09-28T19:18:08Z",
+      "generated": "2026-10-09T16:17:34Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -507,7 +507,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-clibs",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -521,7 +521,7 @@
               "BSD-3-Clause"
             ],
             "name": "FreeBSD-dhclient",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -556,7 +556,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-libcasper",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -619,7 +619,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -654,7 +654,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -675,7 +675,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-utilities",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -703,7 +703,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -717,7 +717,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.129"
+            "version": "3.130"
           },
           {
             "licenses": [
@@ -858,7 +858,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql15-pgvector",
-            "version": "0.8.2"
+            "version": "0.8.7"
           },
           {
             "licenses": [
@@ -872,7 +872,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.14"
+            "version": "3.12.14_1"
           },
           {
             "licenses": [
@@ -935,7 +935,7 @@
     "16-pkg-latest-aarch64": {
       "app_version": "16.15",
       "arch": "aarch64",
-      "generated": "2026-09-28T19:18:13Z",
+      "generated": "2026-10-09T16:17:39Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -972,7 +972,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-clibs",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -986,7 +986,7 @@
               "BSD-3-Clause"
             ],
             "name": "FreeBSD-dhclient",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1021,7 +1021,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-libcasper",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1084,7 +1084,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1119,7 +1119,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1140,7 +1140,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-utilities",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1168,7 +1168,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1182,7 +1182,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.129"
+            "version": "3.130"
           },
           {
             "licenses": [
@@ -1323,7 +1323,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql16-pgvector",
-            "version": "0.8.2"
+            "version": "0.8.7"
           },
           {
             "licenses": [
@@ -1337,7 +1337,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.14"
+            "version": "3.12.14_1"
           },
           {
             "licenses": [
@@ -1400,7 +1400,7 @@
     "17-pkg-latest-aarch64": {
       "app_version": "17.11",
       "arch": "aarch64",
-      "generated": "2026-09-28T19:18:19Z",
+      "generated": "2026-10-09T16:17:44Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1437,7 +1437,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-clibs",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1451,7 +1451,7 @@
               "BSD-3-Clause"
             ],
             "name": "FreeBSD-dhclient",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1486,7 +1486,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-libcasper",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1549,7 +1549,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1584,7 +1584,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1605,7 +1605,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-utilities",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1633,7 +1633,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1647,7 +1647,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.129"
+            "version": "3.130"
           },
           {
             "licenses": [
@@ -1788,7 +1788,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql17-pgvector",
-            "version": "0.8.2"
+            "version": "0.8.7"
           },
           {
             "licenses": [
@@ -1802,7 +1802,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.14"
+            "version": "3.12.14_1"
           },
           {
             "licenses": [
@@ -1865,7 +1865,7 @@
     "18-pkg-latest-aarch64": {
       "app_version": "18.6",
       "arch": "aarch64",
-      "generated": "2026-09-28T19:18:26Z",
+      "generated": "2026-10-09T16:17:49Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1902,7 +1902,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-clibs",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1916,7 +1916,7 @@
               "BSD-3-Clause"
             ],
             "name": "FreeBSD-dhclient",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -1951,7 +1951,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-libcasper",
-            "version": "15.1"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -2014,7 +2014,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-openssl-lib",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -2049,7 +2049,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-runtime",
-            "version": "15.1p3"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -2070,7 +2070,7 @@
               "BSD2CLAUSE"
             ],
             "name": "FreeBSD-utilities",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -2098,7 +2098,7 @@
               "PD"
             ],
             "name": "FreeBSD-zoneinfo",
-            "version": "15.1p2"
+            "version": "15.1p4"
           },
           {
             "licenses": [
@@ -2112,7 +2112,7 @@
               "MPL20"
             ],
             "name": "ca_root_nss",
-            "version": "3.129"
+            "version": "3.130"
           },
           {
             "licenses": [
@@ -2253,7 +2253,7 @@
               "PostgreSQL"
             ],
             "name": "postgresql18-pgvector",
-            "version": "0.8.2"
+            "version": "0.8.7"
           },
           {
             "licenses": [
@@ -2267,7 +2267,7 @@
               "PSFL"
             ],
             "name": "python312",
-            "version": "3.12.14"
+            "version": "3.12.14_1"
           },
           {
             "licenses": [
