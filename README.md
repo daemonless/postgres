@@ -47,8 +47,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=UTC
-      - POSTGRES_INITDB_ARGS=  # Additional arguments for initdb
-      - POSTGRES_HOST_AUTH_METHOD=  # Authentication method (default: scram-sha-256)
+      # - POSTGRES_INITDB_ARGS=  # Additional arguments for initdb
+      # - POSTGRES_HOST_AUTH_METHOD=  # Authentication method (default: scram-sha-256)
     volumes:
       - "/containers/postgres:/var/lib/postgresql/data"
     ports:
@@ -74,8 +74,6 @@ POSTGRES_DB=postgres
 PUID=1000
 PGID=1000
 TZ=UTC
-POSTGRES_INITDB_ARGS=
-POSTGRES_HOST_AUTH_METHOD=
 ```
 
 **appjail-director.yml**:
@@ -102,8 +100,6 @@ services:
         - PUID: !ENV '${PUID}'
         - PGID: !ENV '${PGID}'
         - TZ: !ENV '${TZ}'
-        - POSTGRES_INITDB_ARGS: !ENV '${POSTGRES_INITDB_ARGS}'
-        - POSTGRES_HOST_AUTH_METHOD: !ENV '${POSTGRES_HOST_AUTH_METHOD}'
     volumes:
       - postgres: /var/lib/postgresql/data
 volumes:
@@ -162,8 +158,6 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=UTC
-      - POSTGRES_INITDB_ARGS=
-      - POSTGRES_HOST_AUTH_METHOD=
     volumes:
       - "/containers/postgres:/var/lib/postgresql/data"
 ```
