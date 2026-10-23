@@ -1,11 +1,11 @@
 {
-  "generated": "2026-10-23T10:07:26Z",
+  "generated": "2026-10-23T11:38:49Z",
   "image": "postgres",
   "tags": {
     "14-pkg-latest-aarch64": {
       "app_version": "14.24",
       "arch": "aarch64",
-      "generated": "2026-10-23T10:01:54Z",
+      "generated": "2026-10-23T11:33:11Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -449,7 +449,7 @@
     "15-pkg-latest-aarch64": {
       "app_version": "15.19",
       "arch": "aarch64",
-      "generated": "2026-10-23T10:01:59Z",
+      "generated": "2026-10-23T11:33:17Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -893,7 +893,7 @@
     "16-pkg-latest-aarch64": {
       "app_version": "16.15",
       "arch": "aarch64",
-      "generated": "2026-10-23T10:02:04Z",
+      "generated": "2026-10-23T11:33:23Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1337,7 +1337,7 @@
     "17-pkg-latest-aarch64": {
       "app_version": "17.11",
       "arch": "aarch64",
-      "generated": "2026-10-23T10:02:09Z",
+      "generated": "2026-10-23T11:33:28Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
@@ -1781,7 +1781,7 @@
     "18-pkg-latest-aarch64": {
       "app_version": "18.6",
       "arch": "aarch64",
-      "generated": "2026-10-23T10:02:14Z",
+      "generated": "2026-10-23T11:33:33Z",
       "packages": {
         "dotnet": [],
         "freebsd": [
