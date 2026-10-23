@@ -24,6 +24,13 @@ x-daemonless:
     ports:
       5432: "PostgreSQL port"
 
+  notes: |
+    ## Init scripts
+
+    On first start (empty data directory), files in `/docker-entrypoint-initdb.d/`
+    run in name order: `*.sh` (run if executable, else sourced), `*.sql` and
+    `*.sql.gz`. They run as `bsd`, the database owner, not as root.
+
 services:
   postgres:
     image: ghcr.io/daemonless/postgres:latest

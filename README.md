@@ -191,6 +191,13 @@ Save as `bastille-compose.yml`, then run `bastille up`.
 |------|----------|-------------|
 | `5432` | TCP | PostgreSQL port |
 
+## Init scripts
+
+On first start (empty data directory), files in `/docker-entrypoint-initdb.d/`
+run in name order: `*.sh` (run if executable, else sourced), `*.sql` and
+`*.sql.gz`. They run as `bsd`, the database owner, not as root.
+
+
 **Architectures:** amd64, aarch64
 **User:** `bsd` (UID/GID via PUID/PGID, defaults to 1000:1000)
 **Base:** FreeBSD 15.1

@@ -23,7 +23,7 @@ RUN fetch -qo /tmp/ports.tar.zst \
     rm -rf /usr/ports
 
 # Production image
-FROM ghcr.io/daemonless/base:${BASE_VERSION}
+FROM ghcr.io/daemonless/base-exec:${BASE_VERSION}
 ARG PG_VERSION
 
 ARG FREEBSD_ARCH=amd64
@@ -72,9 +72,12 @@ RUN mkdir -p /var/lib/postgresql/data /var/run/postgresql /run/secrets /docker-e
 
 # Copy service definitions and init scripts
 COPY root/ /
+RUN chmod +x /daemonless/libexec/postgresql /daemonless/init.d/*
+
+CMD ["/daemonless/libexec/postgresql"]
 
 # Make scripts executable
-RUN chmod +x /etc/services.d/*/run /etc/cont-init.d/* /healthz 2>/dev/null || true
+RUN chmod +x /healthz
 
 # Store PG version for scripts
 RUN mkdir -p /var/db/postgres && echo "${PG_VERSION}" > /var/db/postgres/pg_version

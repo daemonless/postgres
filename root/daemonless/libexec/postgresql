@@ -1,5 +1,19 @@
 #!/bin/sh
-# PostgreSQL s6 service
+# Start PostgreSQL; /init has already dropped to bsd.
+
+# Here, not in init.d: an init script's exports end with its process.
+# Load secrets from *_FILE environment variables (Docker secrets pattern)
+for var in $(env | grep '_FILE=' | cut -d= -f1); do
+    base_var="${var%_FILE}"
+    file_path="$(eval echo \"\$$var\")"
+    if [ -f "$file_path" ]; then
+        value="$(cat "$file_path")"
+        export "$base_var"="$value"
+        echo "Loaded secret for $base_var from $file_path"
+    else
+        echo "Warning: Secret file $file_path not found for $var"
+    fi
+done
 
 # Use Linux-compatible path for drop-in replacement
 PGDATA="/var/lib/postgresql/data"
@@ -17,45 +31,45 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
     if [ -n "$POSTGRES_INITDB_ARGS" ]; then
         INITDB_CMD="$INITDB_CMD $POSTGRES_INITDB_ARGS"
     fi
-    /usr/local/bin/s6-setuidgid bsd sh -c "$INITDB_CMD"
+    sh -c "$INITDB_CMD"
 
     # Configure authentication method (default: scram-sha-256)
     AUTH_METHOD="${POSTGRES_HOST_AUTH_METHOD:-scram-sha-256}"
-    /usr/local/bin/s6-setuidgid bsd sh -c "echo 'host all all 0.0.0.0/0 $AUTH_METHOD' >> '$PGDATA/pg_hba.conf'"
-    /usr/local/bin/s6-setuidgid bsd sh -c "echo 'host all all ::/0 $AUTH_METHOD' >> '$PGDATA/pg_hba.conf'"
-    /usr/local/bin/s6-setuidgid bsd sh -c "echo 'local all all trust' >> '$PGDATA/pg_hba.conf'"
+    sh -c "echo 'host all all 0.0.0.0/0 $AUTH_METHOD' >> '$PGDATA/pg_hba.conf'"
+    sh -c "echo 'host all all ::/0 $AUTH_METHOD' >> '$PGDATA/pg_hba.conf'"
+    sh -c "echo 'local all all trust' >> '$PGDATA/pg_hba.conf'"
 
     # Listen on all interfaces
-    /usr/local/bin/s6-setuidgid bsd sh -c "echo \"listen_addresses = '*'\" >> '$PGDATA/postgresql.conf'"
+    sh -c "echo \"listen_addresses = '*'\" >> '$PGDATA/postgresql.conf'"
 
     # Persist the port so multiple host-networked instances can coexist
-    /usr/local/bin/s6-setuidgid bsd sh -c "echo \"port = $PGPORT\" >> '$PGDATA/postgresql.conf'"
+    sh -c "echo \"port = $PGPORT\" >> '$PGDATA/postgresql.conf'"
 
     # Add shared_preload_libraries if specified (required for extensions like vchord)
     if [ -n "$POSTGRES_SHARED_PRELOAD_LIBRARIES" ]; then
-        /usr/local/bin/s6-setuidgid bsd sh -c "echo \"shared_preload_libraries = '$POSTGRES_SHARED_PRELOAD_LIBRARIES'\" >> '$PGDATA/postgresql.conf'"
+        sh -c "echo \"shared_preload_libraries = '$POSTGRES_SHARED_PRELOAD_LIBRARIES'\" >> '$PGDATA/postgresql.conf'"
     fi
 
     # Start temporarily to create user/database and run init scripts
-    /usr/local/bin/s6-setuidgid bsd /usr/local/bin/pg_ctl -D "$PGDATA" -w start
+    /usr/local/bin/pg_ctl -D "$PGDATA" -w start
 
     # Create user if not default 'bsd' user
     PGUSER="${POSTGRES_USER:-postgres}"
     if [ "$PGUSER" != "bsd" ]; then
         echo "Creating user '$PGUSER'..."
-        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d postgres -c "CREATE ROLE $PGUSER WITH LOGIN SUPERUSER" 2>/dev/null || true
+        /usr/local/bin/psql -d postgres -c "CREATE ROLE $PGUSER WITH LOGIN SUPERUSER" 2>/dev/null || true
     fi
 
     # Set password if specified
     if [ -n "$POSTGRES_PASSWORD" ]; then
         echo "Setting password for '$PGUSER'..."
-        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d postgres -c "ALTER ROLE $PGUSER PASSWORD '$POSTGRES_PASSWORD'" 2>/dev/null
+        /usr/local/bin/psql -d postgres -c "ALTER ROLE $PGUSER PASSWORD '$POSTGRES_PASSWORD'" 2>/dev/null
     fi
 
     # Create database if specified and not 'postgres'
     if [ -n "$POSTGRES_DB" ] && [ "$POSTGRES_DB" != "postgres" ]; then
         echo "Creating database '$POSTGRES_DB'..."
-        /usr/local/bin/s6-setuidgid bsd /usr/local/bin/createdb -O "$PGUSER" "$POSTGRES_DB" 2>/dev/null || true
+        /usr/local/bin/createdb -O "$PGUSER" "$POSTGRES_DB" 2>/dev/null || true
     fi
 
     # Run init scripts from /docker-entrypoint-initdb.d/
@@ -74,11 +88,11 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
                     ;;
                 *.sql)
                     echo "Running $f"
-                    /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d "${POSTGRES_DB:-postgres}" -f "$f"
+                    /usr/local/bin/psql -d "${POSTGRES_DB:-postgres}" -f "$f"
                     ;;
                 *.sql.gz)
                     echo "Running $f"
-                    gunzip -c "$f" | /usr/local/bin/s6-setuidgid bsd /usr/local/bin/psql -d "${POSTGRES_DB:-postgres}"
+                    gunzip -c "$f" | /usr/local/bin/psql -d "${POSTGRES_DB:-postgres}"
                     ;;
                 *)
                     echo "Ignoring $f"
@@ -87,9 +101,9 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
         done
     fi
 
-    # Stop PostgreSQL (s6 will start it properly)
-    /usr/local/bin/s6-setuidgid bsd /usr/local/bin/pg_ctl -D "$PGDATA" -w stop
+    # Stop the temporary server; the exec below starts it for real
+    /usr/local/bin/pg_ctl -D "$PGDATA" -w stop
 fi
 
 echo "Starting PostgreSQL..."
-exec /usr/local/bin/s6-setuidgid bsd /usr/local/bin/postgres -D "$PGDATA"
+exec /usr/local/bin/postgres -D "$PGDATA"
