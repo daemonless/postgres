@@ -195,7 +195,8 @@ Save as `bastille-compose.yml`, then run `bastille up`.
 
 On first start (empty data directory), files in `/docker-entrypoint-initdb.d/`
 run in name order: `*.sh` (run if executable, else sourced), `*.sql` and
-`*.sql.gz`. They run as `bsd`, the database owner, not as root.
+`*.sql.gz`. They run as `bsd`, not as root, and connect as
+`POSTGRES_USER`, the superuser that owns the databases.
 
 
 **Architectures:** amd64, aarch64
