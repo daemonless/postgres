@@ -22,12 +22,17 @@ PGDATA="/var/lib/postgresql/data"
 # for every libpq client used during init (psql, createdb) via PGPORT.
 export PGPORT="${POSTGRES_PORT:-5432}"
 
+# The cluster's superuser is POSTGRES_USER, as in the official image: it
+# owns the databases. The server still runs as bsd. Exported, so psql,
+# createdb and the init scripts below connect as it.
+export PGUSER="${POSTGRES_USER:-postgres}"
+
 # Initialize database if needed
 if [ ! -f "$PGDATA/PG_VERSION" ]; then
     echo "Initializing PostgreSQL database..."
 
     # Build initdb command with optional args
-    INITDB_CMD="/usr/local/bin/initdb -D $PGDATA -E UTF8 --locale=C"
+    INITDB_CMD="/usr/local/bin/initdb -D $PGDATA -E UTF8 --locale=C -U $PGUSER"
     if [ -n "$POSTGRES_INITDB_ARGS" ]; then
         INITDB_CMD="$INITDB_CMD $POSTGRES_INITDB_ARGS"
     fi
@@ -52,13 +57,6 @@ if [ ! -f "$PGDATA/PG_VERSION" ]; then
 
     # Start temporarily to create user/database and run init scripts
     /usr/local/bin/pg_ctl -D "$PGDATA" -w start
-
-    # Create user if not default 'bsd' user
-    PGUSER="${POSTGRES_USER:-postgres}"
-    if [ "$PGUSER" != "bsd" ]; then
-        echo "Creating user '$PGUSER'..."
-        /usr/local/bin/psql -d postgres -c "CREATE ROLE $PGUSER WITH LOGIN SUPERUSER" 2>/dev/null || true
-    fi
 
     # Set password if specified
     if [ -n "$POSTGRES_PASSWORD" ]; then
