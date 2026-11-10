@@ -7,26 +7,29 @@
 ARG BASE_VERSION=15
 ARG PG_VERSION=17
 
-# Builder stage — compile pgvector from FreeBSD ports
+# Builder stage — compile pgvector from FreeBSD ports when no binary package exists
 FROM ghcr.io/daemonless/base-exec:${BASE_VERSION} AS builder
 ARG PG_VERSION
 
-RUN pkg update && pkg install -y \
-    postgresql${PG_VERSION}-server \
-    FreeBSD-bmake FreeBSD-clibs-dev FreeBSD-clang FreeBSD-clang-dev FreeBSD-toolchain \
-    gmake pkgconf && \
+RUN pkg update && \
+    mkdir -p /out && \
+    if ! pkg rquery '%v' "postgresql${PG_VERSION}-pgvector" >/dev/null 2>&1; then \
+        pkg install -y \
+            postgresql${PG_VERSION}-server \
+            FreeBSD-bmake FreeBSD-clibs-dev FreeBSD-clang FreeBSD-clang-dev FreeBSD-toolchain \
+            gmake pkgconf && \
+        fetch -qo /tmp/ports.tar.zst \
+            "https://download.freebsd.org/ports/ports/ports.tar.zst" && \
+        mkdir -p /usr/ports && \
+        tar -xf /tmp/ports.tar.zst -C /usr/ports --strip-components=1 \
+            ports/databases/pgvector ports/Mk ports/Templates ports/Keywords && \
+        rm /tmp/ports.tar.zst && \
+        cd /usr/ports/databases/pgvector && \
+        make DEFAULT_VERSIONS+=pgsql=${PG_VERSION} BATCH=yes install clean && \
+        pkg create -o /out postgresql${PG_VERSION}-pgvector && \
+        rm -rf /usr/ports; \
+    fi && \
     pkg clean -ay && rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
-
-RUN fetch -qo /tmp/ports.tar.zst \
-    "https://download.freebsd.org/ports/ports/ports.tar.zst" && \
-    mkdir -p /usr/ports && \
-    tar -xf /tmp/ports.tar.zst -C /usr/ports --strip-components=1 \
-        ports/databases/pgvector ports/Mk ports/Templates ports/Keywords && \
-    rm /tmp/ports.tar.zst && \
-    cd /usr/ports/databases/pgvector && \
-    make DEFAULT_VERSIONS+=pgsql=${PG_VERSION} BATCH=yes install clean && \
-    pkg create -o /tmp postgresql${PG_VERSION}-pgvector && \
-    rm -rf /usr/ports
 
 # Production image
 FROM ghcr.io/daemonless/base-exec:${BASE_VERSION}
@@ -54,15 +57,18 @@ LABEL org.opencontainers.image.title="PostgreSQL ${PG_VERSION}" \
       io.daemonless.upstream-url="${UPSTREAM_URL}" \
       io.daemonless.packages="${PACKAGES}"
 
-# Install PostgreSQL
+# Install PostgreSQL (and prebuilt pgvector when available)
+COPY --from=builder /out /tmp/pgvector-out
 RUN pkg update && \
     pkg install -y ${PACKAGES} && \
+    if ls /tmp/pgvector-out/postgresql${PG_VERSION}-pgvector-* >/dev/null 2>&1; then \
+        pkg add /tmp/pgvector-out/postgresql${PG_VERSION}-pgvector-*; \
+    else \
+        pkg install -y postgresql${PG_VERSION}-pgvector; \
+    fi && \
+    rm -rf /tmp/pgvector-out && \
     pkg clean -ay && \
     rm -rf /var/cache/pkg/* /var/db/pkg/repos/*
-
-# Install pgvector package built from ports in builder stage
-COPY --from=builder /tmp/postgresql${PG_VERSION}-pgvector-*.pkg /tmp/pgvector.pkg
-RUN pkg add /tmp/pgvector.pkg && rm /tmp/pgvector.pkg
 
 # Create directories (use Linux-compatible paths for drop-in replacement)
 RUN mkdir -p /var/lib/postgresql/data /var/run/postgresql /run/secrets /docker-entrypoint-initdb.d && \
